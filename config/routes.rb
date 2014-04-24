@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  get 'pages/index'
 
-  get 'pages/go'
+  root "pages#index"
 
-  get 'pages/contact'
-
-  get 'pages/cv'
-
-  get 'pages/portfolio'
+  resources :pages
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
