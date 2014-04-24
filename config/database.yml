@@ -23,7 +23,6 @@ default: &default
 
 development:
   <<: *default
-  database: john-hager_development
   adapter: postgresql
   reconnect: false
   database: db/john-hager-dev
