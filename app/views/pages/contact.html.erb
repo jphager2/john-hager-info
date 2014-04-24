@@ -1,3 +1,4 @@
+<% provide :title, "Contact" %>
 <article>
   <header>
     <h1>get in touch</h1>
@@ -7,5 +8,72 @@
   </header>
 
   <section>
+    <dl class="accordion" data-accordion>
+      <dd>
+        <a href="#panel1">social</a>
+        <div id="panel1" class = "content active">
+          <ul class="small-block-grid-2 medium-block-grid-4">
+            <li>
+              <%= link_to "https://www.facebook.com/jphager2", target: "_blank" do %>
+                <%= image_tag asset_path("facebook.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "https://www.twitter.com/jphager2", target: "_blank" do %>
+                <%= image_tag asset_path("twitter.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "https://plus.google.com/u/0/+JohnHager3", target: "_blank" do %>
+                <%= image_tag asset_path("google.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "http://www.instagram.com/jphager2", target: "_blank" do %>
+                <%= image_tag asset_path("instagram.png") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </dd>  
+      <dd>
+        <a href="#panel2">development</a>
+        <div id="panel2" class = "content">
+          <ul class="small-block-grid-2">
+            <li>
+              <%= link_to "https://www.github.com/jphager2", target: "_blank" do %>
+                <%= image_tag asset_path("github.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "http://ruby-jph.blogspot.cz/", target: "_blank" do %>
+                <%= image_tag asset_path("blogger.png") %>
+              <% end %>
+            </li>        
+          </ul>
+        </div>
+      </dd>
+      <dd>
+        <a href="#panel3">business</a>
+        <div id="panel3" class = "content">
+          <ul class="small-block-grid-3">
+            <li>
+              <%= link_to "http://cz.linkedin.com/pub/john-hager/45/a6a/6b/", target: "_blank" do %>
+                <%= image_tag asset_path("linkedin.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "skype:jphager2" do %>
+                <%= image_tag asset_path("skype.png") %>
+              <% end %>
+            </li>
+            <li>
+              <%= mail_to "jh@john-hager.info" do %>
+                <%= image_tag asset_path("email.png") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </dd>
   </section>
 </article>
