@@ -27,8 +27,8 @@ development:
   adapter: postgresql
   reconnect: false
   database: db/john-hager-dev
-  username: postgres
-  password: PGj1p2h3!
+  username: <%= ENV["PG_USER"] %> 
+  password: <%= ENV["PG_PASS"] %> 
   host: localhost
 
   # The specified database role being used to connect to postgres.
@@ -66,8 +66,8 @@ test:
   adapter: postgresql
   reconnect: false
   database: db/john-hager-test
-  username: postgres
-  password: PGj1p2h3!
+  username: <%= ENV["PG_USER"] %> 
+  password: <%= ENV["PG_PASS"] %> 
   host: localhost
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
