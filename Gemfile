@@ -49,4 +49,5 @@ group :production do
   gem 'rails_12factor'
 end
 
-
+# for Github stuff
+gem 'github_api'
