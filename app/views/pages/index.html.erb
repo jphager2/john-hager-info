@@ -40,5 +40,38 @@
       </li>
     </ul>
   </section>
+
+  <section>
+    <h2>Github Activity</h2>
+    
+    <div class="row">
+      <div class="medium-4 large-4 columns">
+        <%= image_tag @events.first["actor"]["avatar_url"], class: "profile" %>
+        <h6 class="subheader">@jphager2</h6>
+      </div>
+      <div class="medium-8 large-8 columns">
+        <table>
+          <thead>
+          </thead>
+          <tbody>
+            <% @events.each do |event| %>
+              <tr>
+                <td class="code">
+                  <% out = "" %>
+                  <% out << DateTime.parse(event['created_at']).strftime("On %a, %d %b at %I:%M%p") << ",\s" %>
+                  <% out << "<span class=\"red\">John</span>: <span class=\"yellow\">" << event['type'].sub('Event', '').downcase << "</span>\s=><br><span class=\"green\">" %>
+                  <% out << event["repo"]["name"] << "</span>" %>
+                  <%= out.html_safe %>
+                  <br>
+                  <blockquote>
+                    <%= event["payload"]["commits"].first["message"] %>
+                  </blockquote>
+               </td>
+             </tr>
+           <% end %>
+          </tbody>
+        </table>
+      </div>
+  </section>
 </article>
 

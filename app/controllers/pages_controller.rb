@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
   def index
+    @events = JSON(
+      open('https://api.github.com/users/jphager2/events/public').read
+    )[0..4] 
   end
 
   def go
-    # redirect_to "http://rails-go.herokuapp.com"
   end
 
   def contact
