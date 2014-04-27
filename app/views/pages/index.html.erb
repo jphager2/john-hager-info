@@ -56,16 +56,24 @@
           <tbody>
             <% @events.each do |event| %>
               <tr>
+                <% commit = event["payload"]["commits"].last %>
+                <% commit_path = commit["url"].sub('//api','//www').sub('/repos/','/')%> 
                 <td class="code">
                   <% out = "" %>
                   <% out << DateTime.parse(event['created_at']).strftime("On %a, %d %b at %I:%M%p") << ",\s" %>
                   <% out << "<span class=\"red\">John</span>: <span class=\"yellow\">" << event['type'].sub('Event', '').downcase << "</span>\s=><br><span class=\"green\">" %>
                   <% out << event["repo"]["name"] << "</span>" %>
-                  <%= out.html_safe %>
-                  <br>
-                  <blockquote>
-                    <%= event["payload"]["commits"].last["message"] %>
-                  </blockquote>
+
+
+                  <%= link_to commit_path do %> 
+                    <div>
+                      <%= out.html_safe %>
+                      <br>
+                      <blockquote>
+                        <%= commit["message"] %>
+                      </blockquote>
+                  </div>
+                   <% end %>
                </td>
              </tr>
            <% end %>
