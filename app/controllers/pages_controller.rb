@@ -1,19 +1,21 @@
 class PagesController < ApplicationController
   def index
-    @events = JSON(
-      open('https://api.github.com/users/jphager2/events/public').read
-    )[0..4] 
+    load_github_activity
   end
 
   def go
+    load_github_activity
   end
 
   def contact
+    load_github_activity
   end
 
   def cv
+    load_github_activity
   end
 
   def portfolio
+    load_github_activity
   end
 end
