@@ -13,27 +13,29 @@
 
   <body>
 
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to "John Hager", root_path %></h1>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "home", "/" %>
-          <li class="divider"></li>
-          <li><%= link_to "portfolio", "portfolio" %> 
-          <li class="divider"></li>
-          <li><%= link_to "cv", "cv" %> 
-          <li class="divider"></li>
-          <li><%= link_to "go", "go" %> 
-          <li class="divider"></li>
-          <li><%= link_to "contact", "contact" %> 
+    <div data-interchange="[/_vertical_nav.html, (small)], [/_nav.html, (medium)]"> 
+      <nav class="top-bar">
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to "John Hager", root_path %></h1>
+          </li>
         </ul>
-      </section>
-    </nav>
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="divider"></li>
+            <li><%= link_to "home", "/" %>
+            <li class="divider"></li>
+            <li><%= link_to "portfolio", "portfolio" %> 
+            <li class="divider"></li>
+            <li><%= link_to "cv", "cv" %> 
+            <li class="divider"></li>
+            <li><%= link_to "go", "go" %> 
+            <li class="divider"></li>
+            <li><%= link_to "contact", "contact" %> 
+          </ul>
+        </section>
+      </nav>
+    </div>
 
     <div class="row">
       <div class="large-8 columns"><%= yield %></div>
