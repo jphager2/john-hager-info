@@ -27,13 +27,17 @@
                 <% when /push/ %>
                   <% commit = event["payload"]["commits"].last %>
                   <% message = commit["message"] %>
-                <% else %>
+                <% when /issue/ %>
                   <% commit = event["payload"]["issue"] %>
                   <% message = "##{commit['number']}: #{commit['title']}" %>
                   <% message << "; labels: #{commit['labels'].join(', ')}" unless commit['labels'].empty? %>
+                <% else %>
+                  <% commit = "" %>
+                  <% message = "" %>
+                  <% commit_path = '#' %>
                 <% end %>
 
-                <% commit_path = commit["url"].sub('//api','//www').sub('/repos/','/')%>
+                <% commit_path ||= commit["url"].sub('//api','//www').sub('/repos/','/')%>
 
                 <td class="code">
                   <% out = "" %>
