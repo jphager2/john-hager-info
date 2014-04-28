@@ -30,7 +30,8 @@
                 <% when /issue/ %>
                   <% commit = event["payload"]["issue"] %>
                   <% message = "##{commit['number']}: #{commit['title']}" %>
-                  <% message << "; labels: #{commit['labels'].join(', ')}" unless commit['labels'].empty? %>
+                  <% labels = commit['labels'].map {|label| label["name"]} %>
+                  <% message << "; labels: #{labels.join(', ')}" unless labels.empty? %>
                 <% else %>
                   <% commit = "" %>
                   <% message = "" %>
