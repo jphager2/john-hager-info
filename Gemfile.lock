@@ -127,10 +127,10 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  foundation-rails
+  foundation-rails (~> 5.2.2.0)
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks
+  jquery-turbolinks (~> 2.0.2)
   pg (~> 0.15.1)
   rails (= 4.1.0)
   rails_12factor
