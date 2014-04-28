@@ -12,7 +12,7 @@ gem 'sass-rails', '~> 4.0.3'
 
 # founcation gems
 gem 'zurb-foundation', '~> 4.3.2'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.2.2.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -27,7 +27,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # turbolinks makes some jquery dependent functions not work 
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', '~> 2.0.2'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
