@@ -13,84 +13,69 @@
 
   <body>
 
-    <div data-interchange="[/_vertical_nav.html, (small)], [/_nav.html, (medium)]"> 
-      <nav class="top-bar">
-        <ul class="title-area">
-          <li class="name">
-            <h1><%= link_to "John Hager", root_path %></h1>
-          </li>
+    <nav class="top-bar hide-for-small">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "John Hager", root_path %></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li class="divider"></li>
+          <li><%= link_to "home", "/" %>
+          <li class="divider"></li>
+          <li><%= link_to "portfolio", "portfolio" %> 
+          <li class="divider"></li>
+          <li><%= link_to "cv", "cv" %> 
+          <li class="divider"></li>
+          <li><%= link_to "go", "go" %> 
+          <li class="divider"></li>
+          <li><%= link_to "contact", "contact" %> 
         </ul>
-        <section class="top-bar-section">
-          <ul class="right">
-            <li class="divider"></li>
-            <li><%= link_to "home", "/" %>
-            <li class="divider"></li>
-            <li><%= link_to "portfolio", "portfolio" %> 
-            <li class="divider"></li>
-            <li><%= link_to "cv", "cv" %> 
-            <li class="divider"></li>
-            <li><%= link_to "go", "go" %> 
-            <li class="divider"></li>
-            <li><%= link_to "contact", "contact" %> 
-          </ul>
-        </section>
-      </nav>
-    </div>
+      </section>
+    </nav>
 
-    <div class="row">
-      <div class="large-8 columns"><%= yield %></div>
-      <div class="large-4 columns">
-        <section>
-          <h2>Contact John</h2>
-          <p>
-            You can look for me as @jphager2 almost anywhere. 
-            If you can't find me there, just 
-            <%= mail_to "jh@john-hager.info", "send me an email" %>
-            .
-          </p>
-        </section>
+    <nav class="show-for-small">
+      <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+          <nav class="tab-bar">
+            <section class="left-small">
+              <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
 
-        <section>
-          <h2>Github Activity</h2>
-          
-          <div class="row">
-            <div class="large-12 columns">
-              
-              <table>
-                <thead>
-                </thead>
-                <tbody>
-                  <% @events.each do |event| %>
-                    <tr>
-                      <% commit = event["payload"]["commits"].last %>
-                      <% commit_path = commit["url"].sub('//api','//www').sub('/repos/','/')%> 
-                      <td class="code">
-                        <% out = "" %>
-                        <% out << DateTime.parse(event['created_at']).strftime("On %a, %d %b at %I:%M%p") << ",\s" %>
-                        <% out << "<span class=\"red\">John</span>: <span class=\"yellow\">" << event['type'].sub('Event', '').downcase << "</span>\s=><br><span class=\"green\">" %>
-                        <% out << event["repo"]["name"] << "</span>" %>
+            <section class="middle tab-bar-section">
+              <h1 class="title"><%= link_to "John Hager", root_path %></h1>
+            </section>
 
+          </nav>
 
-                        <%= link_to commit_path do %> 
-                          <div>
-                            <%= out.html_safe %>
-                            <br>
-                            <blockquote>
-                              <%= commit["message"] %>
-                            </blockquote>
-                          </div>
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <%= image_tag @events.first["actor"]["avatar_url"], class: "profile" %>
-              <h6 class="subheader">@jphager2</h6>
-          </div>
-        </section>
+          <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+              <li><label>John Hager</label></li>
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Portfolio", 'portfolio'%></li>
+              <li><%= link_to "CV", 'cv' %></li>
+              <li><%= link_to "Go", 'go' %></li>
+              <li><%= link_to "Contact", 'contact' %></li>
+            </ul>
+          </aside>
+
+          <section class="main-section">
+            <div class="row">
+              <%= render 'layouts/main' %>
+            </div>
+          </section>
+
+          <a class="exit-off-canvas"></a>
+
+        </div>
       </div>
+    </nav>
+
+    <div class="row hide-for-small">
+      <%= render 'layouts/main' %>
     </div>
+    
     <%= javascript_include_tag "application" %>
   </body>
 </html>
