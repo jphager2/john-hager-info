@@ -10,7 +10,7 @@ gem 'pg', '~>0.15.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
-# founcation gems
+# Foundation gems
 gem 'zurb-foundation', '~> 4.3.2'
 gem 'foundation-rails', '~> 5.2.2.0'
 
