@@ -4,7 +4,8 @@ module PagesHelper
       open('https://api.github.com/users/jphager2/events/public').read
     )[0..4] 
 
-  rescue
+  rescue Exception => error
+    puts "Rescuing #{error}: #{error.message} and providing a BlackHole!!!"
     @events = BlackHole.new
   end
 
