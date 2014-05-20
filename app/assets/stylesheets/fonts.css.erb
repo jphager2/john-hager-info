@@ -1,18 +1,20 @@
 @font-face {
   font-family: 'You Are Loved';
-  src:url(<%= asset_path 'You Are Loved.ttf' %>);
+  src:url("<%= asset_path 'You Are Loved.ttf' %>");
 }
 
 @font-face {
   font-family: 'THE MAPLE ORIGINS';
-  src:url(<%= asset_path 'THE MAPLE ORIGINS.ttf' %>);
+  src:url("<%= asset_path 'THE MAPLE ORIGINS.ttf' %>");
 }
 
 @font-face {
   font-family: 'Inconsolata';
-  src:url(<%= asset_path 'Inconsolata.otf' %>);
+  src:url("<%= asset_path 'Inconsolata.otf' %>");
 }
 
-#logo-text {
-  font-family: <%= ['Inconsolata', 'You Are Loved', 'THE MAPLE ORIGINS'].shuffle.first %>;
+<% font = ['"Inconsolata"', '"You Are Loved"', '"THE MAPLE ORIGINS"'].shuffle.last %>
+
+#name-text {
+  font-family: <%= font %>;
 } 
