@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "John Hager" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -28,7 +28,7 @@
     <nav class="top-bar hide-for-small">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to "John Hager", root_path %></h1>
+          <h1><%= link_to "John Hager", root_path, id: "logo-text" %></h1>
         </li>
       </ul>
       <section class="top-bar-section">
