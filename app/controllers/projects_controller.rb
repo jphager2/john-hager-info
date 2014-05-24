@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
 
   def create
+    redirect_to root_path unless signed_in?
     unless params[:name]
       @project = Project.new
 
@@ -17,6 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    redirect_to root_path unless signed_in?
     unless params[:name]
       @project = Project.find(params[:id])
 
@@ -35,6 +37,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    redirect_to root_path unless signed_in?
     Project.destroy(params[:id])
 
     redirect_to root_path 

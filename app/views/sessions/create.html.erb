@@ -1,0 +1,11 @@
+<section>
+  <%= form_tag url: {action: :create}, html: {class: "login_form"} do %>
+    <%= label_tag :email, "Email: " %>
+    <%= text_field_tag :email %>
+    <br>
+    <%= label_tag :password, "Password: " %>
+    <%= password_field_tag :password %>
+    <br>
+    <%= submit_tag "Login" %>
+  <% end %>
+</section>

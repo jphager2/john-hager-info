@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  def new
-  end
-
   def login 
   end
 
@@ -9,7 +6,9 @@ class UsersController < ApplicationController
   end 
 
   def create
-    if signed_in?
+    redirect_to root_path unless signed_in?
+
+    if params.include?(:email)
       user = User.new
       user.name, user.email = params[:name], params[:email]
       user.password = params[:password]
@@ -19,18 +18,18 @@ class UsersController < ApplicationController
         redirect_to controller: :pages, action: :index
       else
         flash[:messages] = user.errors.full_messages
-        redirect_to action: :signup
+        redirect_to action: :create
       end
     else
-      redirect_to controller: :pages, action: :admin
+      @user = User.new
     end
   end
 
   def destroy
-    if signed_in?
-      user = User.find(params[:id])
-      user.destroy
-    end
+    redirect_to root_path unless signed_in?
+
+    user = User.find(params[:id])
+    user.destroy
 
     redirect_to controller: :pages, action: :admin
   end

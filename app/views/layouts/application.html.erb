@@ -47,6 +47,17 @@
           <li><%= link_to "go", "go" %> 
           <li class="divider"></li>
           <li><%= link_to "contact", "contact" %> 
+          <% if signed_in? %>
+            <li class="divider"></li>
+            <li><%= link_to "admin", "/admin" %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "logout", "/logout", method: "delete" %>
+            </li>
+          <% else %>
+            <li class="divider"></li>
+            <li><%= link_to "login", "/login" %></li>
+          <% end %>
         </ul>
       </section>
     </nav>
@@ -76,6 +87,14 @@
               <li><%= link_to "CV", 'cv' %></li>
               <li><%= link_to "Go", 'go' %></li>
               <li><%= link_to "Contact", 'contact' %></li>
+              <% if signed_in? %>
+                <li><%= link_to "admin", "/admin" %></li>
+                <li>
+                  <%= link_to "logout", "/logout", method: "delete" %>
+                </li>
+              <% else %>
+                <li><%= link_to "login", "/login" %></li>
+              <% end %>
             </ul>
           </aside>
 

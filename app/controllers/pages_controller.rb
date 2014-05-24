@@ -21,6 +21,7 @@ class PagesController < ApplicationController
   end
 
   def admin
+    redirect_to root_path unless signed_in?
     load_github_activity
   end
 end

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   get 'contact',   to: "pages#contact"
   get 'go',        to: "pages#go"
   get 'cv',        to: "pages#cv"
-  get 'admin',     to: "pages#admin"
+
+  get    'login',     to: "sessions#create"
+  post   'login',     to: "sessions#create"
+  delete 'logout',    to: "sessions#destroy"
+  get    'admin',     to: "pages#admin"
 
   get  'projects/new',      to: "projects#create"
   post 'projects/new',      to: "projects#create"
