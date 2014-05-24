@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   get 'contact',   to: "pages#contact"
   get 'go',        to: "pages#go"
   get 'cv',        to: "pages#cv"
+  get 'admin',     to: "pages#admin"
+
+  get  'projects/new',      to: "projects#create"
+  post 'projects/new',      to: "projects#create"
+  get  'projects/edit/:id', to: "projects#update"
+  post 'projects/edit/:id', to: "projects#update"
+
+  delete 'projects/destroy/:id', to: "projects#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

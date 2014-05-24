@@ -16,97 +16,18 @@
   <section>
     <div id="panel1" class = "content active">
       <ul class="small-block-grid-1 medium-block-grid-2">
-        <li>
-          <%= link_to "http://www.our-velky-day.eu", target: "_blank" do %>
-            <%= image_tag asset_path("our_velky_day.png") %>
-          <% end %>
-          <h6 class="subheader">Our-Velky-Day </h6>
-          <p>
-            This is a Rails application with guest posts and blog post 
-            models that was built for my fiancee and my wedding in 
-            2014. There is also a simple content managment system that
-            allows you to update the pages from the browser.
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://steak-code.herokuapp.com/", target: "_blank" do %>
-            <%= image_tag asset_path("steak_code.png") %>
-          <% end %>
-          <h6 class="subheader">Steak Code</h6>
-          <p>
-            This is a quick and fun project. The idea is to be able
-            to load and edit code in interesting fonts like STEAK.
-            Perhaps not very useful, but definitely fun.
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://rubygems.org/gems/mangdown", target: "_blank" do %>
-            <%= image_tag asset_path("mangdown.png") %>
-          <% end %>
-          <h6 class="subheader">Mangdown</h6>
-          <p>
-            This is the first major Ruby project that I worked on. 
-            It is a gem that allows you to download manga from the 
-            web. There are others like it, in python for example, 
-            but it was a great project for learning object oriented 
-            programing and using nokogiri.
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://rubygems.org/gems/gotasku", target: "_blank" do %>
-            <%= image_tag asset_path("gotasku.png") %>
-          <% end %>
-          <h6 class="subheader">Gotasku</h6>
-          <p>
-            Similar to Mangdown, this is uses nokogiri to scrape data
-            from from the goproblems.com website and save go problems
-            to your computer. It also uses mechanize to let you sign
-            in to the site.  I hope to also add a feature for allowing
-            users to upload their problems directly from their 
-            computer.  
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://rails-go.herokuapp.com", target: "_blank" do %>
-            <%= image_tag asset_path("rails_go.png") %>
-          <% end %>
-          <h6 class="subheader">Rails-Go</h6>
-          <p>
-            Rails-go is a Rails app for the game of Go. It is a bit 
-            slow because the game logic is completely implimented in
-            the Rails controller. There is almost 0% javascript. I 
-            love Ruby, and I really enjoyed building the Go logic. 
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://rails-chess.herokuapp.com/", target: "_blank" do %>
-            <%= image_tag asset_path("rails_chess.png") %>
-          <% end %>
-          <h6 class="subheader">Rails-Chess</h6>
-          <p>
-            Rails-chess is a Rails app that lets you play chess. 
-            The game logic is Ruby, so it is a little slow, but  
-            it uses JavaScript to let you chose your move. 
-            Chess took a little bit longer to build than Go because
-            there are so many more logical moves in Chess. However,
-            it was much easier to check if the king is checked
-            than it was to get the liberties of a group of stones in
-            Go! 
-          </p>
-        </li>
-        <li>
-          <%= link_to "http://sinatra-go.herokuapp.com/", target: "_blank" do %>
-            <%= image_tag asset_path("sinatra_go.png") %>
-          <% end %>
-          <h6 class="subheader">Sinatra-Go</h6>
-          <p>
-            Sinatra-go is a simple Sinatra app that uses the same
-            go logic as Rails-go, which is my ruby-go gem. This app
-            uses websockets to push data to clients. One client can 
-            take black, another can take white, and further clients
-            can watch the game progress as spectators. 
-          </p>
-        </li>
+        <% @projects.each do |project| %>
+          <li>
+            <%= link_to project.url, target: "_blank" do %>
+              <% image = project.name.downcase.gsub(/[-\s]/, '_') %>
+              <%= image_tag asset_path("#{image}.png") %>
+            <% end %>
+            <h6 class="subheader"><%= project.name %></h6>
+            <p>
+              <%= project.description %>
+            </p>
+          </li>
+        <% end %>
       </ul>
     </div>
 

@@ -16,6 +16,11 @@ class PagesController < ApplicationController
   end
 
   def portfolio
+    @projects = Project.all
+    load_github_activity
+  end
+
+  def admin
     load_github_activity
   end
 end
