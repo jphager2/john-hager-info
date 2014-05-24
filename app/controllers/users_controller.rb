@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  def signup
+  def new
   end
 
-  def signin
+  def login 
   end
 
   def auth
