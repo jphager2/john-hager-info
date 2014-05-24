@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
 
   def create
-    redirect_to root_path unless signed_in?
+    unless signed_in?
+      redirect_to root_path 
+      return
+    end
+
     unless params[:name]
       @project = Project.new
 
@@ -15,11 +19,16 @@ class ProjectsController < ApplicationController
         description: params[:description],
       )
       redirect_to controller: :pages, action: :portfolio 
+      return
     end
   end
 
   def update
-    redirect_to root_path unless signed_in?
+    unless signed_in?
+      redirect_to root_path 
+      return
+    end
+
     unless params[:name]
       @project = Project.find(params[:id])
 
@@ -39,7 +48,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path unless signed_in?
+    unless signed_in?
+      redirect_to root_path 
+      return
+    end
+
     Project.destroy(params[:id])
 
     redirect_to root_path 
