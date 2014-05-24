@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
       load_github_activity 
       render 'create' 
+      return
     else
       Project.create(
         name:        params[:name],
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
 
       load_github_activity 
       render 'edit' 
+      return
     else
       @project = Project.find(params[:id])
       @project.update(
