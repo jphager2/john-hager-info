@@ -1,4 +1,5 @@
 require 'faye/websocket' 
+require 'json'
 
 module JohnHager
   class GithubBackend
@@ -16,6 +17,10 @@ module JohnHager
         ws.on :open do |event|
           p [:open, ws.object_id]
           @clients << ws
+
+          ws.send(
+            JSON.generate({events: "event data"})
+          )
         end
         
         ws.on :message do |event|
