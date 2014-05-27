@@ -10,7 +10,7 @@
     </p>
   </section>
 
-  <section id="githubActivity">
+  <section>
     <h2>Github Activity</h2>
     
     <div class="row">
@@ -19,7 +19,7 @@
         <table>
           <thead>
           </thead>
-          <tbody>
+          <tbody id="githubActivity">
             <% @events.each do |event| %>
               <tr>
                 <% type = event['type'].sub('Event', '').downcase %>

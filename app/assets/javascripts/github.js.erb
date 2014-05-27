@@ -1,0 +1,29 @@
+var scheme   = "ws://";
+var uri      = scheme + window.document.location.host + "/";
+var ws       = new WebSocket(uri);
+
+ws.onmessage = function(message) {
+  var data = JSON.parse(message.data);
+  var eventsData = (data.events);
+  console.log(eventsData);
+  html = "" 
+  for (i in eventsData) {
+    evnt = eventsData[i];
+
+    html += '<tr><td class="code">';
+    html += '<a href="' + evnt.path +'" target="_blank">';
+    html += '<div>';
+    html += '<span>' + evnt.time + ', </span>';
+    html += '<span class="red">John</span>: <span class="yellow">'; 
+    html += evnt.type; 
+    html += '</span>&nbsp;=><br><span class="green">';
+    html += evnt.name;
+    html += '</span>';
+    html += '</div>';
+    html += '</td></tr>';
+  }
+
+  $("#githubActivity").html(html);
+};
+
+
