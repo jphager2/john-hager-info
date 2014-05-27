@@ -11,13 +11,11 @@ module JohnHager
 
     def call(env)
       if Faye::WebSocket.websocket?(env)
-        ws = Faye::Websocket.new(env, nil, {ping: KEEPALIVE_TIME})
+        ws = Faye::WebSocket.new(env, nil, {ping: KEEPALIVE_TIME})
 
         ws.on :open do |event|
           p [:open, ws.object_id]
           @clients << ws
-
-          #run daemon with ws
         end
         
         ws.on :message do |event|
