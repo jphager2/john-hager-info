@@ -27,7 +27,7 @@ module JohnHager
             case data[i]["type"]
             when /push/
               commit = event["payload"]["commits"].last
-              data["message"] = commit["message"]
+              data[i]["message"] = commit["message"]
             when /issue/
               issue = event["payload"]["issue"]
               labels = issue['labels'].map {|label| label["name"]} 
@@ -40,8 +40,8 @@ module JohnHager
                 data[i]["message"] << "; labels: #{labels.join(', ')}"  
               end
             else
-              commit = "#" 
-              message = "" 
+              commit = {"url" => "#"} 
+              data[i]["message"] = "" 
             end
 
             base = commit || issue

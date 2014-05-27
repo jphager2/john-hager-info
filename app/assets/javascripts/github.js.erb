@@ -18,7 +18,8 @@ ws.onmessage = function(message) {
     html += evnt.type; 
     html += '</span>&nbsp;=><br><span class="green">';
     html += evnt.name;
-    html += '</span>';
+    html += '</span><br>';
+    html += '<blockquote>' + evnt.message + '</blockquote>'
     html += '</div>';
     html += '</td></tr>';
   }
