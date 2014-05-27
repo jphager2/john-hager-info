@@ -21,3 +21,6 @@ module JohnHager
     # config.i18n.default_locale = :de
   end
 end
+
+require_relative '../app/middleware/github_backend'
+config.middleware.use( JohnHager::GithubBackend )
