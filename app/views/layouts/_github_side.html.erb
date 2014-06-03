@@ -1,0 +1,71 @@
+<div class="large-4 columns">
+  <section>
+    <h2>Contact John</h2>
+    <p>
+      You can look for me as @jphager2 almost anywhere. 
+      If you can't find me there, just 
+      <%= mail_to "jh@john-hager.info", "send me an email" %>
+      .
+    </p>
+  </section>
+
+  <section>
+    <h2>Github Activity</h2>
+    
+    <div class="row">
+      <div class="large-12 columns">
+        
+        <table>
+          <thead>
+          </thead>
+          <tbody id="githubActivity">
+            <% @events.each do |event| %>
+              <tr>
+                <% type = event['type'].sub('Event', '').downcase %>
+                <% case type %>
+                <% when /push/ %>
+                  <% commit = event["payload"]["commits"].last %>
+                  <% message = commit["message"] %>
+                <% when /issue/ %>
+                  <% commit = event["payload"]["issue"] %>
+                  <% message = "##{commit['number']}: #{commit['title']}" %>
+                  <% labels = commit['labels'].map {|label| label["name"]} %>
+                  <% message << "; labels: #{labels.join(', ')}" unless labels.empty? %>
+                <% else %>
+                  <% commit = "" %>
+                  <% message = "" %>
+                  <% commit_path = '#' %>
+                <% end %>
+
+                <% commit_path ||= commit["url"].sub('//api','//www').sub('/repos/','/')%>
+
+                <td class="code">
+                  <% out = "" %>
+                  <% out << DateTime.parse(event['created_at']).strftime("On %a, %d %b at %I:%M%p") << ",\s" %>
+                  <% out << "<span class=\"red\">John</span>: <span class=\"yellow\">" << type << "</span>\s=><br><span class=\"green\">" %>
+                  <% out << event["repo"]["name"] << "</span>" %>
+
+
+                  <%= link_to commit_path, target: "_blank" do %> 
+                    <div>
+                      <%= out.html_safe %>
+                      <br>
+                      <blockquote>
+                        <%= message %>
+                      </blockquote>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= image_tag @events.first["actor"]["avatar_url"], class: "profile" %>
+        <h6 class="subheader">@jphager2</h6>
+
+
+    </div>
+  </section>
+</div>
+
+

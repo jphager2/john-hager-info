@@ -100,7 +100,9 @@
 
           <section class="main-section">
             <div class="row">
+              <%= @disqus = nil %>
               <%= render 'layouts/main' %>
+              <%= render 'layouts/github_side' %>
             </div>
           </section>
 
@@ -111,8 +113,9 @@
     </nav>
 
     <div class="row hide-for-small">
+      <% @disqus = "layouts/disqus_large" %>
       <%= render 'layouts/main' %>
+      <%= render 'layouts/github_side' %>
     </div>
-    
   </body>
 </html>
