@@ -25,97 +25,62 @@
   </head>
 
   <body>
-
-    <nav class="top-bar hide-for-small">
-      <ul class="title-area">
-        <li class="name logo">
-          <h1>
-            <%= link_to "John Hager", root_path, id: "logo-text" %>
-          </h1>
-          <%= image_tag asset_path("jh-logo.png") %>
-        </li>
-      </ul>
-      <section class="top-bar-section">
-        <ul class="right">
-          <li class="divider"></li>
-          <li><%= link_to "home", "/" %>
-          <li class="divider"></li>
-          <li><%= link_to "portfolio", "portfolio" %> 
-          <li class="divider"></li>
-          <li><%= link_to "cv", "cv" %> 
-          <li class="divider"></li>
-          <li><%= link_to "go", "go" %> 
-          <li class="divider"></li>
-          <li><%= link_to "contact", "contact" %> 
-          <% if signed_in? %>
-            <li class="divider"></li>
-            <li><%= link_to "admin", "/admin" %></li>
-            <li class="divider"></li>
-            <li>
-              <%= link_to "logout", "/logout", method: "delete" %>
-            </li>
-          <% else %>
-            <li class="divider"></li>
-            <li><%= link_to "login", "/login" %></li>
-          <% end %>
-        </ul>
-      </section>
-    </nav>
-
-    <nav class="show-for-small">
-      <div class="off-canvas-wrap" data-offcanvas>
-        <div class="inner-wrap">
-          <nav class="tab-bar">
-            <section class="left-small">
-              <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-            </section>
-
-            <section class="middle tab-bar-section">
-              <div class="title">
-                <h1><%= link_to "John Hager", root_path %></h1>
-                <%= image_tag asset_path("jh-logo.png") %>
-              </div>
-            </section>
-
-          </nav>
-
-          <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-              <li><label>John Hager</label></li>
-              <li><%= link_to "Home", root_path %></li>
-              <li><%= link_to "Portfolio", 'portfolio'%></li>
-              <li><%= link_to "CV", 'cv' %></li>
-              <li><%= link_to "Go", 'go' %></li>
-              <li><%= link_to "Contact", 'contact' %></li>
-              <% if signed_in? %>
-                <li><%= link_to "admin", "/admin" %></li>
-                <li>
-                  <%= link_to "logout", "/logout", method: "delete" %>
-                </li>
-              <% else %>
-                <li><%= link_to "login", "/login" %></li>
-              <% end %>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="sticky fixed">
+          <nav class="top-bar" data-topbar="">
+            <ul class="title-area">
+              <!-- Title Area -->
+              <li class="name">
+                <%= link_to root_path, class: "name logo" do %>
+                  <h1>John Hager</h1>
+                  <%= image_tag asset_path("jh-logo.png") %>
+                <% end %>         
+              </li>
+              <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+              <li class="toggle-topbar menu-icon">
+                <a href="#"></a>
+              </li>
             </ul>
-          </aside>
 
-          <section class="main-section">
-            <div class="row">
-              <%= @disqus = nil %>
-              <%= render 'layouts/main' %>
-              <%= render 'layouts/github_side' %>
-            </div>
-          </section>
 
-          <a class="exit-off-canvas"></a>
+            <section class="top-bar-section">
 
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li class="divider hide-for-small"></li>
+                <li><%= link_to "Home", root_path %></li>
+                <li class="divider hide-for-small"></li>
+                <li><%= link_to "Portfolio", 'portfolio'%></li>
+                <li class="divider hide-for-small"></li>
+                <li><%= link_to "CV", 'cv' %></li>
+                <li class="divider hide-for-small"></li>
+                <li><%= link_to "Go", 'go' %></li>
+                <li class="divider hide-for-small"></li>
+                <li><%= link_to "Contact", 'contact' %></li>
+                <% if signed_in? %>
+                  <li class="divider hide-for-small"></li>
+                  <li><%= link_to "admin", "/admin" %></li>
+                  <li class="divider hide-for-small"></li>
+                  <li>
+                    <%= link_to "logout", "/logout", method: "delete" %>
+                  </li>
+                <% else %>
+                  <li class="divider hide-for-small"></li>
+                  <li><%= link_to "login", "/login" %></li>
+                <% end %>
+              </ul>
+            </section>
+          </nav>
         </div>
       </div>
-    </nav>
-
-    <div class="row hide-for-small">
+    </div>
+    
+    <div class="row">
       <% @disqus = "layouts/disqus_large" %>
       <%= render 'layouts/main' %>
       <%= render 'layouts/github_side' %>
+
     </div>
   </body>
 </html>
