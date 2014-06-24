@@ -17,7 +17,7 @@ class PagesController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.all
+    @projects = Project.order("updated_at desc")
   end
 
   def admin
