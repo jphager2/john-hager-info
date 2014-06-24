@@ -9,6 +9,12 @@ module PagesHelper
     @events = BlackHole.new
   end
 
+  def load_promotion
+    @promotion = Project.where(
+      created_at: (Date.today-7)..(Date.today+1)
+    )
+  end
+
   class BlackHole
     def initialize(*args)
     end

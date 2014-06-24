@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def index
+    load_promotion
   end
 
   def go

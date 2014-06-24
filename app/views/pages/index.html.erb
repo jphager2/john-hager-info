@@ -11,6 +11,37 @@
     </blockquote>
   </header>
 
+  <% unless @promotion.empty? %>
+    <section>
+      <header>
+        <% plural = "s" if @promotion.length > 1 %> 
+        <h2>
+          <%= "Check out the project#{plural} I just added.." %>
+        </h2> 
+      </header>
+      <div id="panel1" class = "content active">
+        <ul class="medium-block-grid-2 large-block-grid-1">
+          <% @promotion.each do |project| %>
+            <li> 
+              <div class="row">
+                <div class="small-12 columns">
+                  <h3><%= project.name %></h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="large-6 columns">
+                  <%= image_tag asset_path(project.image) %>
+                </div>
+                <div class="large-6 columns">
+                  <%= project.description[0...140] + '...' %>
+                </div>
+              </div> 
+            </li>
+          <% end %>
+      </div>
+    </section>
+  <% end %>
+
   <section>
     <h2>My Goals</h2>
     <ul>

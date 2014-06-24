@@ -19,8 +19,7 @@
         <% @projects.each do |project| %>
           <li>
             <%= link_to project.url, target: "_blank" do %>
-              <% image = project.name.downcase.gsub(/[-\s]/, '_') %>
-              <%= image_tag asset_path("#{image}.png") %>
+              <%= image_tag asset_path(project.image) %>
             <% end %>
             <h6 class="subheader"><%= project.name %></h6>
             <p>
