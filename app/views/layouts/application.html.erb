@@ -48,26 +48,28 @@
 
               <!-- Right Nav Section -->
               <ul class="right">
-                <li class="divider hide-for-small"></li>
+                <li class="divider hide-for-medium"></li>
                 <li><%= link_to "Home", root_path %></li>
-                <li class="divider hide-for-small"></li>
+                <li class="divider hide-for-medium"></li>
                 <li><%= link_to "Portfolio", 'portfolio'%></li>
-                <li class="divider hide-for-small"></li>
+                <li class="divider hide-for-medium"></li>
                 <li><%= link_to "CV", 'cv' %></li>
-                <li class="divider hide-for-small"></li>
+                <li class="divider hide-for-medium"></li>
                 <li><%= link_to "Go", 'go' %></li>
-                <li class="divider hide-for-small"></li>
+                <li class="divider hide-for-medium"></li>
                 <li><%= link_to "Contact", 'contact' %></li>
+                <li class="divider hide-for-medium"></li>
+                <li><%= link_to "Feedback", 'https://github.com/jphager2/john-hager-info/issues', target: "_blank" %></li>
                 <% if signed_in? %>
-                  <li class="divider hide-for-small"></li>
-                  <li><%= link_to "admin", "/admin" %></li>
-                  <li class="divider hide-for-small"></li>
+                  <li class="divider hide-for-medium"></li>
+                  <li><%= link_to "Admin", "/admin" %></li>
+                  <li class="divider hide-for-medium"></li>
                   <li>
-                    <%= link_to "logout", "/logout", method: "delete" %>
+                    <%= link_to "Logout", "/logout", method: "delete" %>
                   </li>
                 <% else %>
-                  <li class="divider hide-for-small"></li>
-                  <li><%= link_to "login", "/login" %></li>
+                  <li class="divider hide-for-medium"></li>
+                  <li><%= link_to "Login", "/login" %></li>
                 <% end %>
               </ul>
             </section>
