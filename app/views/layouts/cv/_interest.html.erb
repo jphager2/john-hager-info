@@ -1,0 +1,26 @@
+<% interests = ["Ruby on Rails","Go/ Weiqi/ Baduk","Web Design","TDD/ BDD","Open Source","Manga/ Comics","Fiction","Cooking"].shuffle %>
+<div class="row">
+  <div class="large-4 columns">
+    <h3>Interests</h3>
+  </div> 
+  <div class="large-8 columns">
+    <div class="row">
+      <% li_per_col = interests.length / 3 %> 
+      <% li_extra   = interests.length % 3 %>
+      <% 3.times do |t| %>
+        <div class="small-4 columns">
+          <ul>
+            <% li_per_col.times do |l| %>
+              <% index = li_per_col * t + l %> 
+              <li><%= interests[index] %></li>
+            <% end %>
+            <% if li_extra >= t+1 %>
+              <%="<li>#{interests[((t+1)*-1)]}</li>".html_safe %>          
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>                <!-- end of interests sub row -->
+  </div>                  <!-- end of right side -->
+</div>                    <!-- end of Interests row -->
+
