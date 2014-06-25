@@ -23,6 +23,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def read
+    @project = Project.find(params[:id])
+    load_github_activity
+  end
+
   def update
     unless signed_in?
       redirect_to root_path 

@@ -1,0 +1,18 @@
+<section>
+  <div id="panel1" class = "content active">
+    <ul class="small-block-grid-1 medium-block-grid-2">
+      <% @projects.each do |project| %>
+        <li>
+          <%= link_to project.url, target: "_blank" do %>
+            <%= image_tag asset_path(project.image) %>
+          <% end %>
+          <h6 class="subheader"><%= project.name %></h6>
+          <p>
+            <%= project.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+

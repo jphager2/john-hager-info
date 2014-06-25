@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get  'projects/new',      to: "projects#create"
   post 'projects/new',      to: "projects#create"
+  get  'projects/:id',      to: "projects#read"
   get  'projects/edit/:id', to: "projects#update"
   post 'projects/edit/:id', to: "projects#update"
 
