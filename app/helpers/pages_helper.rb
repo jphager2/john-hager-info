@@ -1,9 +1,8 @@
 module PagesHelper
   def load_github_activity 
-    @events = JSON(
-      open('https://api.github.com/users/jphager2/events/public').read
-    )[0..4] 
-
+    api_request_uri = 'https://api.github.com/users/jphager2/events/public'
+    json = open(api_request_uri).read
+    @events = JSON(json)[0..4].map { |event| GithubEvent.new(event) } 
   rescue Exception => error
     puts "Rescuing #{error}: #{error.message} and providing a BlackHole!!!"
     @events = BlackHole.new
@@ -15,10 +14,22 @@ module PagesHelper
     )
   end
 
-  class GithubEvents
+  class GithubEvent
 
-    def initialize(json)
+    def initialize(hash)
+      @hash = hash
+    end
 
+    def datetime 
+      @datetime ||= hash['created_at']).strftime("On %a, %d %b at %I:%M%p") 
+    end
+
+    def message
+      @message ||= ""
+    end
+
+    def uri
+      @uri ||= "#"
     end
   end
 
