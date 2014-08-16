@@ -15,6 +15,13 @@ module PagesHelper
     )
   end
 
+  class GithubEvents
+
+    def initialize(json)
+
+    end
+  end
+
   class BlackHole
     def initialize(*args)
     end

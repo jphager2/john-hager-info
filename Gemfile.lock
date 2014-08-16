@@ -65,6 +65,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.3)
     multi_json (1.9.2)
+    naught (1.0.0)
     pg (0.15.1)
     polyglot (0.3.4)
     rack (1.5.2)
@@ -145,6 +146,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks (~> 2.0.2)
+  naught
   pg (~> 0.15.1)
   rails (= 4.1.0)
   rails_12factor

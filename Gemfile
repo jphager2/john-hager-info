@@ -10,6 +10,9 @@ gem 'thin'
 # WebSockets
 gem "faye-websocket", '~> 0.7.3'
 
+# For null objects
+gem 'naught'
+
 # Database
 gem 'pg', '~>0.15.1'
 
