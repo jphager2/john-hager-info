@@ -19,47 +19,9 @@ module JohnHager
           @clients << ws
 
           events = PagesController.new.load_github_activity
+            .map {|event| event.to_hash}
 
-          data = []
-          events.each_with_index do |event, i|
-            data << {}
-            data[i]["type"] = event["type"].sub("Event", '').downcase
-            case data[i]["type"]
-            when /push/
-              commit = event["payload"]["commits"].last
-              data[i]["message"] = commit["message"]
-            when /issue/
-              issue = event["payload"]["issue"]
-              labels = issue['labels'].map {|label| label["name"]} 
-
-              data[i]["message"] = ""   << 
-                "##{issue['number']}: " <<
-                "#{issue['title']}"     << 
-
-              unless labels.empty?
-                data[i]["message"] << "; labels: #{labels.join(', ')}"  
-              end
-            else
-              commit = {"url" => "#"} 
-              data[i]["message"] = "" 
-            end
-
-            base = commit || issue
-            data[i]["path"] = base["url"]
-              .sub('//api','//www')
-              .sub('/repos/','/')
-
-            data[i]["time"] = DateTime
-              .parse(event['created_at'])
-              .strftime("On %a, %d %b at %I:%M%p")
-
-            data[i]["name"] = event["repo"]["name"]
-
-            ws
-              .send(
-                JSON.generate({events: data})
-              )
-          end
+          ws.send(JSON.generate({events: events}))
         end
         
         ws.on :message do |event|

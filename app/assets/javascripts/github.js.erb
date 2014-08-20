@@ -11,13 +11,13 @@ ws.onmessage = function(message) {
     evnt = eventsData[i];
 
     html += '<tr><td class="code">';
-    html += '<a href="' + evnt.path +'" target="_blank">';
+    html += '<a href="' + evnt.uri +'" target="_blank">';
     html += '<div>';
-    html += '<span>' + evnt.time + ', </span>';
+    html += '<span>' + evnt.datetime + ', </span>';
     html += '<span class="red">John</span>: <span class="yellow">'; 
-    html += evnt.type; 
+    html += evnt.action; 
     html += '</span>&nbsp;=><br><span class="green">';
-    html += evnt.name;
+    html += evnt.repo;
     html += '</span><br>';
     html += '<blockquote>' + evnt.message + '</blockquote>'
     html += '</div>';
