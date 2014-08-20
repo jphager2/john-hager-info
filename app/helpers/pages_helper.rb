@@ -1,11 +1,16 @@
 module PagesHelper
+  require 'naught'
+
   def load_github_activity 
     api_request_uri = 'https://api.github.com/users/jphager2/events/public'
     api_response = JSON(open(api_request_uri).read)
     @events  = GithubEvents.generate(api_response[0..4]) 
   rescue Object => error
-    puts "Rescuing #{error}: #{error.message} and providing a BlackHole!!!"
-    @events = BlackHole.new
+    STDERR.puts (
+      "Rescuing #{error}: #{error.message} " + 
+      "and providing a BlackHole!!!"
+    )
+    @events = [GithubEvents::NullEvent.new]   
   end
 
   def load_promotion
@@ -109,15 +114,13 @@ module PagesHelper
         "; labels: #{labels.join(', ')}" unless labels.empty?
       end
     end
-  end
 
-
-  class BlackHole
-    def initialize(*args)
-    end
-
-    def method_missing(method, *args, &block)
-      BlackHole.new
+    NullEvent = Naught.build do |config|
+      config.mimic Event
+      def message
+        "Looks like the server didn't get a response from Github." +
+        "Try refreshing your browser in a minute."
+      end
     end
   end
 end
