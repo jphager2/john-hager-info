@@ -1,14 +1,26 @@
+<%
+  skills = {
+    "development" => %w{ Ruby },
+    "frontend web development" => %w{ HTML JavaScript },
+    "backend web development" => [
+      "Ruby on Rails", "Sinatra", "Railo-CFML"
+    ], 
+    "testing" => %w{ Minitest Rspec },
+    "other" => %w{ SharePoint Exchange },
+  }
+%>
+
+
 <div class="row">
   <div class="large-4 columns">
     <h3>Skills</h3>
   </div>                  <!-- end of left side -->
   <div class="large-8 columns">
     <p>
-      Ruby, Python, JavaScript(languages), HTML, CSS, JavaScript,
-      and Foundation(frontend web development), Rails, Sinatra
-      and Railo-CMFL(backend web development), Git(version 
-      control), Heroku(deploying apps), SharePoint and Exchange
-      online administration.
+    <% skills.each do |area,skills| %>
+      <span class="skill-area"><%= area.capitalize %></span>
+      <span class="skills">(<%= skills.join(', ') %>)</span>
+    <% end %>
     </p>
   </div>                  <!-- end of right side -->
 </div>                    <!-- end of Skills -->
