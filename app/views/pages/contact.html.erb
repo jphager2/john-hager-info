@@ -13,8 +13,8 @@
         <a href="#panel1">
           <h6>social</h6>
         </a>
-        <div id="panel1" class = "content active">
-          <ul class="small-block-grid-2 medium-block-grid-4">
+        <div id="panel1" class = "content active text-center">
+          <ul class="small-block-grid-4 medium-block-grid-4">
             <li>
               <%= link_to "https://www.facebook.com/jphager2", target: "_blank" do %>
                 <%= image_tag asset_path("facebook.png") %>
@@ -42,8 +42,9 @@
         <a href="#panel2">
           <h6>development</h6>
         </a>
-        <div id="panel2" class = "content">
-          <ul class="small-block-grid-2 medium-block-grid-4">
+        <div id="panel2" class = "content text-center">
+          <ul class="small-block-grid-4 medium-block-grid-4">
+            <li></li>
             <li>
               <%= link_to "https://www.github.com/jphager2", target: "_blank" do %>
                 <%= image_tag asset_path("github.png") %>
@@ -55,7 +56,6 @@
               <% end %>
             </li>        
             <li></li>
-            <li></li>
           </ul>
         </div>
       </dd>
@@ -63,8 +63,8 @@
         <a href="#panel3">
           <h6>business</h6>
         </a>
-        <div id="panel3" class = "content">
-          <ul class="small-block-grid-2 medium-block-grid-4">
+        <div id="panel3" class = "content text-center">
+          <ul class="small-block-grid-3 medium-block-grid-3">
             <li>
               <%= link_to "http://cz.linkedin.com/pub/john-hager/45/a6a/6b/", target: "_blank" do %>
                 <%= image_tag asset_path("linkedin.png") %>
@@ -82,5 +82,6 @@
           </ul>
         </div>
       </dd>
+    </dl>
   </section>
 </article>
