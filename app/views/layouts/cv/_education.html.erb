@@ -1,60 +1,53 @@
+<% educations = [
+  {
+    institution:  "University of Kent at Brussels-Brussels School of International Studies",
+    place:        "Brussels",
+    time:         "2010-2011",
+    achievements: [
+      "M.A. in Migration Studies, <strong>with Merit</strong>",
+    ],
+  },
+  {
+    institution:  "University of Maryland Baltimore County (UMBC)",
+    place:        "Baltimore",
+    time:         "2006-2010",
+    achievements: [
+      "B.A. in Modern Languages, Linguistics, and Intercultural Communication, <i>magna cum laude</i>",
+      "Ricardo Palomares Award for Academic Excellence and Service (2010)",
+    ],
+  },
+  {
+    institution:  "Westfälische Wilhelms-Universität Münster, Germany (Gästhörer)",
+    place:        "Münster",
+    time:         "Summer 2009",
+    achievements: [],
+  },
+]
+%>
 <div class="row">
   <div class="large-4 columns">
     <h3>Education</h3>
   </div> 
   <div class="large-8 columns">
+  <% educations.each do |education| %>
     <div class="row">
       <div class="small-11 small-offset-1">
-        <h5>
-          University of Kent at Brussels-Brussels School
-          of International Studies
-        </h5>
-        <em>Brussels, 2010-2011</em>
+        <h5><%= education[:institution] %></h5>
+        <em><%= [education[:place], education[:time]].join(', ')%></em>
       </div> 
     </div>                <!-- end of Kent header sub row -->
     <div class="row">
       <div class="small-11 small-offset-1">
         <ul>
+          <% education[:achievements].each do |achievement| %>
           <li>
-            M.A. in Migration Studies, 
-            <strong>with Merit</strong>
+          <%= achievement.html_safe %>
           </li>
+          <% end %>
         </ul>
       </div>
     </div>                <!-- end of Kent sub row -->
-    <div class="row">
-      <div class="small-11 small-offset-1">
-        <h5>
-          University of Maryland Baltimore County (UMBC)
-        </h5>
-        <em>Baltimore, 2006-2010</em>
-      </div>
-    </div>                <!-- end UMBC header sub row -->
-    <div class="row">
-      <div class="small-11 small-offset-1">
-        <ul>
-          <li>
-            B.A. in Modern Languages, Linguistics, and 
-            Intercultural Communication, 
-            <strong>Magna Cum Laude</strong>
-          </li>
-          <li>
-            Cumulative GPA:  3.786 - Dean’s List; President’s 
-            List; Ricardo Palomares Award for Academic Excellence 
-            and Service (2010)  
-          </li>
-        </ul>
-      </div>
-    </div>                <!-- end of UMBC sub row -->
-    <div class="row">
-      <div class="small-11 small-offset-1">
-        <h5>
-          Westfälische Wilhelms-Universität Münster, Germany; 
-          Gästhörer
-        </h5>
-        <em>Münster, Summer 2009</em>
-      </div>
-    </div>                <!-- end WWUM sub row -->
+  <% end %>
   </div>
 </div>                    <!-- end of Education row -->
 

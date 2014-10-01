@@ -1,13 +1,13 @@
 <%
-  skills = {
-    "development" => %w{ Ruby },
-    "frontend web development" => %w{ HTML JavaScript },
-    "backend web development" => [
+  skills = [
+    ["development", %w{ Ruby Git Github Rake Bash }],
+    ["frontend web development", %w{ HTML CSS JavaScript }],
+    ["backend web development", [ 
       "Ruby on Rails", "Sinatra", "Railo-CFML"
-    ], 
-    "testing" => %w{ Minitest Rspec },
-    "other" => %w{ SharePoint Exchange },
-  }
+    ]], 
+    ["testing", %w{ Minitest Rspec }],
+    ["other", %w{ SharePoint Exchange }],
+  ]
 %>
 
 
@@ -17,10 +17,10 @@
   </div>                  <!-- end of left side -->
   <div class="large-8 columns">
     <p>
-    <% skills.each do |area,skills| %>
-      <span class="skill-area"><%= area.capitalize %></span>
-      <span class="skills">(<%= skills.join(', ') %>)</span>
-    <% end %>
+    <%= skills.map { |area,skills| 
+      "<span class=\"skill-area\">#{area.capitalize}</span>
+      <span class=\"skills\">(#{skills.join(', ')})</span>"
+    }.join(', ').html_safe %>.
     </p>
   </div>                  <!-- end of right side -->
 </div>                    <!-- end of Skills -->

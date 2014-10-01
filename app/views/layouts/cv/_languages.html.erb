@@ -1,10 +1,21 @@
+<%
+  languages = [
+    ['Excellent',           ['German']], 
+    ['Contantly Improving', ['Czech'] ], 
+    ['Basic',               ['French']], 
+  ]
+%>
+
 <div class="row">
   <div class="large-4 columns">
     <h3>Human Languages</h3>
   </div>                  <!-- end of left side -->
   <div class="large-8 columns">
     <p>
-      Excellent German, with basic knowledge of Czech and French.
+    <%= languages.map { |level,lang| 
+      "<span class=\"lang-level\">#{level}</span>
+      <span class=\"langs\">#{lang.join(', ')}</span>"
+    }.join(', ').html_safe %>.
     </p>
   </div>                  <!-- end of right side -->
 </div>                    <!-- end of Human Languages -->
