@@ -1,3 +1,21 @@
+<% contacts = [
+ ["social", [
+    ["facebook",  "https://www.facebook.com/jphager2"],
+    ["twitter",   "https://www.twitter.com/jphager2"],
+    ["google",    "https://plus.google.com/u/0/+JohnHager3"],
+    ["instagram", "http://www.instagram.com/jphager2"],
+  ]],
+  ["development", [
+    ["github",  "https://www.github.com/jphager2"],
+    ["blogger", "http://ruby-jph.blogspot.cz/"],
+  ]],
+  ["business", [
+    ["linkedin", "http://cz.linkedin.com/pub/john-hager/45/a6a/6b/"],
+    ["skype",    "skype:jphager2"],
+    ["email",    "jh@john-hager.info"],
+  ]],
+] %>
+
 <% provide :title, "Contact" %>
 <article>
   <header>
@@ -9,79 +27,30 @@
 
   <section>
     <dl class="accordion" data-accordion>
+      <% contacts.each_with_index do |(area,links),area_index| %>
+        <% panel = "panel#{area_index}" %>
+        <% active = "active " if area_index.zero? %>
       <dd>
-        <a href="#panel1">
-          <h6>social</h6>
+        <a href="#<%= panel %>">
+          <h6><%= area %></h6>
         </a>
-        <div id="panel1" class = "content active text-center">
-          <ul class="small-block-grid-4 medium-block-grid-4">
+        <div id="<%= panel %>" class="content <%= active %>text-center">
+          <ul class="small-block-grid-<%= links.length %>">
+            <% links.each do |name,url| %>
+              <% if name == 'email' # this is a shitty hack %>
+            <li><%= mail_to url %></li>
+                <% next %>
+              <% end %>
             <li>
-              <%= link_to "https://www.facebook.com/jphager2", target: "_blank" do %>
-                <%= image_tag asset_path("facebook.png") %>
+              <%= link_to url, target: "_blank" do %>
+                <%= image_tag asset_path("#{name}.png") %>
               <% end %>
             </li>
-            <li>
-              <%= link_to "https://www.twitter.com/jphager2", target: "_blank" do %>
-                <%= image_tag asset_path("twitter.png") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "https://plus.google.com/u/0/+JohnHager3", target: "_blank" do %>
-                <%= image_tag asset_path("google.png") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "http://www.instagram.com/jphager2", target: "_blank" do %>
-                <%= image_tag asset_path("instagram.png") %>
-              <% end %>
-            </li>
+            <% end %>
           </ul>
         </div>
       </dd>  
-      <dd>
-        <a href="#panel2">
-          <h6>development</h6>
-        </a>
-        <div id="panel2" class = "content text-center">
-          <ul class="small-block-grid-4 medium-block-grid-4">
-            <li></li>
-            <li>
-              <%= link_to "https://www.github.com/jphager2", target: "_blank" do %>
-                <%= image_tag asset_path("github.png") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "http://ruby-jph.blogspot.cz/", target: "_blank" do %>
-                <%= image_tag asset_path("blogger.png") %>
-              <% end %>
-            </li>        
-            <li></li>
-          </ul>
-        </div>
-      </dd>
-      <dd>
-        <a href="#panel3">
-          <h6>business</h6>
-        </a>
-        <div id="panel3" class = "content text-center">
-          <ul class="small-block-grid-3 medium-block-grid-3">
-            <li>
-              <%= link_to "http://cz.linkedin.com/pub/john-hager/45/a6a/6b/", target: "_blank" do %>
-                <%= image_tag asset_path("linkedin.png") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "skype:jphager2" do %>
-                <%= image_tag asset_path("skype.png") %>
-              <% end %>
-            </li>
-            <li>
-              <%= mail_to "jh@john-hager.info" %>
-            </li>
-            <li></li>
-          </ul>
-        </div>
-      </dd>
+      <% end %>
     </dl>
   </section>
 </article>
