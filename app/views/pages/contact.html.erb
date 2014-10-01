@@ -6,13 +6,14 @@
     ["instagram", "http://www.instagram.com/jphager2"],
   ]],
   ["development", [
-    ["github",  "https://www.github.com/jphager2"],
-    ["blogger", "http://ruby-jph.blogspot.cz/"],
+    ["github",        "https://www.github.com/jphager2"],
+    ["blogger",       "http://ruby-jph.blogspot.cz/"],
+    ["stackoverflow", "http://stackoverflow.com/users/2536065/jphager2"],
   ]],
   ["business", [
     ["linkedin", "http://cz.linkedin.com/pub/john-hager/45/a6a/6b/"],
     ["skype",    "skype:jphager2"],
-    ["email",    "jh@john-hager.info"],
+    ["email",    "mailto:jh@john-hager.info"],
   ]],
 ] %>
 
@@ -37,10 +38,6 @@
         <div id="<%= panel %>" class="content <%= active %>text-center">
           <ul class="small-block-grid-<%= links.length %>">
             <% links.each do |name,url| %>
-              <% if name == 'email' # this is a shitty hack %>
-            <li><%= mail_to url %></li>
-                <% next %>
-              <% end %>
             <li>
               <%= link_to url, target: "_blank" do %>
                 <%= image_tag asset_path("#{name}.png") %>
@@ -51,6 +48,14 @@
         </div>
       </dd>  
       <% end %>
+      <dd>
+        <a href="#panel999">
+          <h6>icon credits</h5>
+        </a>
+        <div id="panel999" class="content">
+          <%= render 'layouts/icon_credits' %>
+        </div>
+      </dd>
     </dl>
   </section>
 </article>
