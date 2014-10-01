@@ -1,3 +1,59 @@
+<% experiences = [
+  {
+    organization: "Freelance Consultant",
+    title:        "Web Developer and Consultant",
+    time:         "September 2013 to Present",
+    achievements: [
+      "Worked with individual teams within the client organization to create a user-friendly, database driven, set of SharePoint sites that allows for the accessibility of organizational information and facilitates business processes",
+      "Cleaned up HTML code for a client CFML website, and extracted integrated styles into a coherent CSS class structure",
+      "Updated client websites (PHP and CFML) occasionally as webmaster",
+    ],
+  },
+  {
+    organization: "Freelance Consultant",
+    title:        "Finance and Knowledge Management",
+    time:         "September 2013 to February 2014",
+    achievements: [
+      "Managed cashflow, budget, payables, and recievable tracking documents, and transfered expertise and knowledge to new resource of the client",
+    ],
+  },
+  {
+    organization: "The Academy of Business in Society",
+    title:        "Operations Coordinator",
+    time:         "April 2012 to September 2013",
+    achievements: [
+      "Administrator of the organization’s cloud-based IT system, including Exchange and SharePoint Online",
+    "Central member of the organization’s finance team, with specific responsibilities of invoicing, managing receivables and payables, and budget planning",
+    ],
+  },
+  {
+    organization: "European Parliament, Directorate General for Interpretation and Conferences, Communication Interinstitutional, and International Cooperation Unit",
+    title:        "Stagiaire",
+    time:         "October 2011 to February 2012",
+    achievements: [
+      "Co-managed the Directorate General's external communication via social media",
+      "Formed and implemented new communication strategies",
+      "Monitored various media for and created new content related to the DG and conference interpreting",
+    ],
+  },
+  {
+    organization: "UMBC Department of Modern Languages, Linguistics, and Intercultural Communication’s German Conversation Program",
+    title:        "Instructor",
+    time:         "February 2010 to May 2010",
+    achievements: [
+      "Created and executed lesson plans to focus on improving German students’ confidence and ability in reading, writing, and speaking especially in a conversational context in a way that optimized learning for students and fostered a high standard of learning that the University saught to obtain",
+    ],
+  },
+  {
+    organization: "Howard County Public School System",
+    title:        "Substitute Teacher",
+    time:         "March 2009 to June 2010",
+    achievements: [
+      "Worked with language department head to create a coherent plan for introductory, intermediate, and advanced German classes in accordance with the standard curriculum",
+    ],
+  },
+]%>
+
 <div class="row">
   <div class="large-4 columns">
     <h3>Professional Experience</h3>
@@ -7,177 +63,32 @@
     </h6>
   </div>                  <!-- end of Header side --> 
   <div class="large-8 columns">
+    <% experiences.each do |experience| %>
     <div class="row">
       <div class="small-12 columns left">
-        <h5>Freelance Consultant</h5>
+        <h5><%= experience[:organization] %></h5>
       </div>
-    </div>                <!-- end of Freelance Consultant header -->
+    </div>                <!-- end of Organization header -->
     <div class="row">
       <div class="small-8 columns">
-        <em>Finance and Knowledge Managment</em>
+        <em><%= experience[:title] %></em>
       </div>
       <div class="small-4 columns">
-        <em>September 2013 to Present</em>
-      </div>
-    </div>                <!-- end of job sub row -->
-    <div class="row">
-      <div class="small-5 columns small-offset-2">
-        <em>Rails Projects</em>
-        <ul>
-          <li>
-            <%= link_to "our-velky-day.eu", "http://www.our-velky-day.eu" %>
-          </li>
-          <li> 
-            <%= link_to "mangdown_gui", "https://github.com/jphager2/mangdown_gui" %>
-          </li>
-        </ul>
-      </div>              <!-- end of Rails Projects -->
-      <div class="small-5 columns">
-        <em>Ruby Projects</em>
-        <ul>
-          <li>
-            <%= link_to "mangdown", "https://www.github.com/jphager2/mangdown" %>
-          </li>
-          <li>
-            <%= link_to "gotasku", "https://www.github.com/jphager2/gotasku" %>
-          </li>
-        </ul>
-      </div>              <!-- end of Ruby Projects -->
-    </div>                <!-- end of job sub row -->      
-    <div class="row">
-      <div class="small-12 columns left">
-        <h5>The Academy of Business in Society</h5>
-      </div>
-    </div>                <!-- end of ABIS header -->
-    <div class="row">
-      <div class="small-8 columns">
-        <em>Operations Coordinator</em>
-      </div>
-      <div class="small-4 columns">
-        <em>April 2012 to September 2013</em>
+        <em><%= experience[:time] %></em>
       </div>
     </div>                <!-- end of job sub row -->
     <div class="row">
       <div class="small-12 columns">
         <ul>
+          <% experience[:achievements].each do |achievement| %>
           <li>
-            Administrator of the organization's cloud-based IT 
-            system, including Exchange and SharePoint Online
+          <%= achievemnt %>
           </li>
-          <li> 
-            Tasked with creating a user-friendly, database driven,
-            web site (SharePoint) that allows for the accessibility
-            of organizational information on accounts, finances,
-            projects, events
-          </li>
-          <li>
-            Part of the organization's finance team, with specific
-            responsibilities of invoicing, managing receivables,
-            payables, and budget planning
-          </li>
+          <% end %>
         </ul>
       </div>              <!-- end of Description -->
     </div>                <!-- end of job sub row -->      
-    <div class="row">
-      <div class="small-12 columns left">
-        <h5>
-          European Parliament, Directorate General for 
-          Interpretation and Conferences, Communication
-          Interinstitutional, and International Cooperation 
-          Unit
-        </h5>
-      </div>
-    </div>                <!-- end of EuroParl header -->
-    <div class="row">
-      <div class="small-8 columns">
-        <em>Stagiaire</em>
-      </div>
-      <div class="small-4 columns">
-        <em>October 2011 to February 2012</em>
-      </div>
-    </div>                <!-- end of job sub row -->
-    <div class="row">
-      <div class="small-12 columns">
-        <ul>
-          <li>
-            Co-managed the Directorate General's external 
-            communication via social media 
-          </li>
-          <li> 
-            Formed and implemented new communication strategies
-          </li>
-          <li>
-            Monitored various media for and created new content 
-            related to the DG and conference interpreting
-          </li>
-        </ul>
-      </div>              <!-- end of Description -->
-    </div>                <!-- end of job sub row --> 
-    <div class="row">
-      <div class="small-12 columns left">
-        <h5>
-          UMBC Department of Modern Languages, Linguistics, 
-          and Intercultural Communication’s German Conversation 
-          Program 
-        </h5>
-      </div>
-    </div>                <!-- end of UMBC header -->
-    <div class="row">
-      <div class="small-8 columns">
-        <em>Instructor</em>
-      </div>
-      <div class="small-4 columns">
-        <em>February 2010 to May 2010</em>
-      </div>
-    </div>                <!-- end of job sub row -->
-    <div class="row">
-      <div class="small-12 columns">
-        <ul>
-          <li>
-            Created lesson plans to focus on improving German 
-            students’ confidence and ability in reading, 
-            writing, and speaking especially in a conversational 
-            context  
-          </li>
-          <li> 
-            Worked within the department in order to optimize 
-            learning for students and create a high standard 
-            of learning that the University seeks to obtain
-          </li>
-        </ul>
-      </div>              <!-- end of Description -->
-    </div>                <!-- end of job sub row -->
-    <div class="row">
-      <div class="small-12 columns left">
-        <h5>
-          Howard County Public School System
-        </h5>
-      </div>
-    </div>                <!-- end of HCPSS header -->
-    <div class="row">
-      <div class="small-8 columns">
-        <em>Substitute Teacher</em>
-      </div>
-      <div class="small-4 columns">
-        <em>March 2009 to June 2010</em>
-      </div>
-    </div>                <!-- end of job sub row -->
-    <div class="row">
-      <div class="small-12 columns">
-        <ul>
-          <li>
-            Accepted short and long term assignments at the 
-            elementary and high school levels
-          </li>
-          <li> 
-            Worked with language department head to create a 
-            coherent plan for introductory, intermediate, 
-            and advanced German classes in line with the 
-            standard curriculum 
-          </li>
-        </ul>
-      </div>       <!-- end of Description -->
-    </div>         <!-- end of job sub row -->
+    <% end %>
   </div>           <!-- end of Professional Experience sub rows -->
 </div>             <!-- end of Professional Experience -->
 
