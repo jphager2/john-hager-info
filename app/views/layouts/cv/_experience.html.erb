@@ -1,7 +1,7 @@
 <% experiences = [
   {
     organization: "Freelance Consultant",
-    title:        "Web Developer and Consultant",
+    title:        "Web Developer",
     time:         "September 2013 to Present",
     achievements: [
       "Worked with individual teams within the client organization to create a user-friendly, database driven, set of SharePoint sites that allows for the accessibility of organizational information and facilitates business processes",
@@ -57,10 +57,6 @@
 <div class="row">
   <div class="large-4 columns">
     <h3>Professional Experience</h3>
-    <h6 class="subheader">
-      See 
-      <%= link_to "my portfolio", "portfolio" %>
-    </h6>
   </div>                  <!-- end of Header side --> 
   <div class="large-8 columns">
     <% experiences.each do |experience| %>
@@ -82,7 +78,7 @@
         <ul>
           <% experience[:achievements].each do |achievement| %>
           <li>
-          <%= achievemnt %>
+          <%= achievement %>
           </li>
           <% end %>
         </ul>
