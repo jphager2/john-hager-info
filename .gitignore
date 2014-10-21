@@ -19,3 +19,6 @@
 *~
 *.swp
 *.swo
+
+# Ignore Secrets
+/config/secrets.yml
