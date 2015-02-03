@@ -25,14 +25,7 @@ class ProjectsController < ApplicationController
 
   def read
     @project = Project.find(params[:id])
-    respond_to do |f|
-      f.html do
-        load_github_activity
-      end
-      f.pdf do
-        render pdf: "read", show_as_html: false, layout: 'pdf.html.erb'
-      end
-    end
+    load_github_activity
   end
 
   def update
