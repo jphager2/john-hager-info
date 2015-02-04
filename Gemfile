@@ -29,6 +29,11 @@ gem 'daemons', '~> 1.1.9'
 gem 'zurb-foundation', '~> 4.3.2'
 gem 'foundation-rails', '~> 5.2.2.0'
 
+# PDF
+#gem 'wicked_pdf'
+#gem 'wkhtmltopdf-binary'
+#gem 'wkhtmltopdf-heroku'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

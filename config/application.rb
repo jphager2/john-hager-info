@@ -24,6 +24,8 @@ module JohnHager
     config.middleware.delete( Rack::Lock )
 
     config.middleware.use( JohnHager::GithubBackend ) #include middle
+
+    config.assets.precompile += ['application.css', 'pages.css', 'foundation_and_overrides.scss', 'fonts.css'] 
   end
 end
 
