@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   get    'login',     to: "sessions#create"
   post   'login',     to: "sessions#create"
-  delete 'logout',    to: "sessions#destroy"
-  get    'admin',     to: "pages#admin"
+  delete 'logout',    to: "sessions#destroy", as: :logout
+  get    'admin',     to: "pages#admin", as: :admin
 
   get  'projects/new',      to: "projects#create"
   post 'projects/new',      to: "projects#create"

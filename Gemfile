@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.6'
+
+# For nested attributes
+gem "cocoon"
 
 # server
 gem 'thin'
@@ -28,6 +31,7 @@ gem 'daemons', '~> 1.1.9'
 # Foundation gems
 gem 'zurb-foundation', '~> 4.3.2'
 gem 'foundation-rails', '~> 5.2.2.0'
+gem 'foundation_rails_helper', '~> 0.5.0'
 
 # PDF
 gem 'wicked_pdf'

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="large-12 columns">
+    <div class="sticky fixed">
+      <nav class="top-bar" data-topbar="">
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <%= link_to root_path, class: "name logo" do %>
+              <h1>John Hager</h1>
+              <%= image_tag "jh-logo.png" %>
+            <% end %>         
+          </li>
+          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon">
+            <a href="#"></a>
+          </li>
+        </ul>
+
+
+        <section class="top-bar-section">
+
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "Home", root_path %></li>
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "Portfolio", 'portfolio'%></li>
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "CV", 'cv' %></li>
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "Go", 'go' %></li>
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "Contact", 'contact' %></li>
+            <li class="divider hide-for-medium"></li>
+            <li><%= link_to "Feedback", 'https://github.com/jphager2/john-hager-info/issues', target: "_blank" %></li>
+            <% if signed_in? %>
+              <%= render 'layouts/admin_links' %>
+            <% else %>
+              <li class="divider hide-for-medium"></li>
+              <li><%= link_to "Login", "/login" %></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+</div>

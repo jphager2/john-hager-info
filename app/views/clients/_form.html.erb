@@ -1,0 +1,20 @@
+<%= form_for(@client) do |f| %>
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.text_field :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.text_field :contact_phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,47 @@
+<%= form_for(@invoice) do |f| %>
+  <%= f.collection_select :client_id, Client.all, :id, :name  %>
+  <% unless params[:action] == 'new' %>
+    <div class="row">
+      <div class="small-6 columns">
+        <%= f.number_field :invoice_year %>
+      </div>
+      <div class="small-6 columns">
+        <%= f.number_field :invoice_count %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.date_field :date %>
+    </div>
+    <div class="small-6 columns">
+      <%= f.date_field :due_date %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.date_field :period_covered_from %>
+    </div>
+    <div class="small-6 columns">
+      <%= f.date_field :period_covered_to %>
+    </div>
+  </div>
+  <h3>Services</h3>
+  <div id="service_items">
+    <%= f.fields_for :service_items do |s| %>
+      <%= render 'service_item_fields', f: s %>
+    <% end %>
+    <%= link_to_add_association '+ Add a Service', f, :service_items %>
+  <h3>Expenses</h3>
+  <div id="expense_items">
+    <%= f.fields_for :expense_items do |e| %>
+      <%= render 'expense_item_fields', f: e %>
+    <% end %>
+    <%= link_to_add_association '+ Add an Expense', f, :expense_items %>
+  </div>
+  <div class="clearfix"></div>
+  <%= f.check_box :published, hint: "If you publish an Invoice, you will not be able to edit it" %>
+  <div class="clearfix"></div>
+  <%= f.submit %>
+  <div class="clearfix"></div>
+<% end %>

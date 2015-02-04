@@ -1,0 +1,43 @@
+<h1>Listing invoices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Invoice year</th>
+      <th>Invoice count</th>
+      <th>Date</th>
+      <th>Due date</th>
+      <th>Period covered from</th>
+      <th>Period covered to</th>
+      <th>Price</th>
+      <th>Customer</th>
+      <th>Customer code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.number %></td>
+        <td><%= invoice.invoice_year %></td>
+        <td><%= invoice.invoice_count %></td>
+        <td><%= invoice.date %></td>
+        <td><%= invoice.due_date %></td>
+        <td><%= invoice.period_covered_from %></td>
+        <td><%= invoice.period_covered_to %></td>
+        <td><%= invoice.price %></td>
+        <td><%= invoice.client_id %></td>
+        <td><%= invoice.client_code %></td>
+        <td><%= link_to 'Show', invoice %></td>
+        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invoice', new_invoice_path %>

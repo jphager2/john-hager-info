@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
-  def initialize
-    super
-    load_github_activity
-  end
+  skip_before_action :load_github_activity, only: [:admin]
+  layout 'admin', only: [:admin]
 
   def index
     load_promotion

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @invoice.number %>
+</p>
+
+<p>
+  <strong>Invoice year:</strong>
+  <%= @invoice.invoice_year %>
+</p>
+
+<p>
+  <strong>Invoice count:</strong>
+  <%= @invoice.invoice_count %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @invoice.date %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @invoice.due_date %>
+</p>
+
+<p>
+  <strong>Period covered from:</strong>
+  <%= @invoice.period_covered_from %>
+</p>
+
+<p>
+  <strong>Period covered to:</strong>
+  <%= @invoice.period_covered_to %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @invoice.price %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.client_id %>
+</p>
+
+<p>
+  <strong>Customer code:</strong>
+  <%= @invoice.client_code %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>
