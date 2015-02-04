@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :clients
+
+  resources :invoices
+
   root "pages#index"
 
   get 'portfolio', to: "pages#portfolio"
