@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'go',        to: "pages#go"
   get 'cv',        to: "pages#cv"
 
-  get    'login',     to: "sessions#create"
+  get    'login',     to: "sessions#new"
   post   'login',     to: "sessions#create"
   delete 'logout',    to: "sessions#destroy", as: :logout
   get    'admin',     to: "pages#admin", as: :admin

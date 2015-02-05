@@ -1,5 +1,5 @@
 <section>
-  <%= form_for(@user, url: {action: :create}, html: {class: "login_form"}) do |f| %>
+  <%= form_for(User.new, url: {action: :create}, html: {class: "login_form"}) do |f| %>
     <%= f.text_field :email %>
     <br>
     <%= f.password_field :password %>
