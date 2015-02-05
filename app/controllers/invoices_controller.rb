@@ -10,6 +10,12 @@ class InvoicesController < AdminController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+    respond_to do |f|
+      f.html {}
+      f.pdf do
+        render pdf: @invoice.number, show_as_html: false, layout: 'pdf.html.erb', footer: { html: { template: 'invoices/_invoice_footer.pdf.erb' } }#, disposition: 'attachment'
+      end
+    end
   end
 
   # GET /invoices/new

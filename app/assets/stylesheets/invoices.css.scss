@@ -5,3 +5,86 @@
 .nested-fields:nth-child(odd) {
   background-color: #efefef;
 }
+
+.pdf-logo {
+  width: 50% 
+}
+
+.pdf-body {
+  font-size: 10px;
+  p {
+    font-size: 12px;
+  }
+  table.no-style {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: none;
+    td, tr {
+      background-color: transparent;
+    }
+  }
+  footer {
+    .office-address {
+      color: whitesmoke;
+      font-style: italic;
+    }
+  }
+}
+
+#invoiceInfo {
+  width: 100%;
+  td {
+    &:nth-child(odd) {
+      text-align: right;
+    }
+    &:nth-child(even) {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+
+.invoice-items {
+  th {
+    text-align: center;
+  }
+  tr {
+    border-top: 1px solid #ccc;
+  }
+}
+
+.total-row {
+  th {
+    background-color: whitesmoke;
+    text-align: right;
+  }
+  td {
+    &:nth-child(2) {
+      border: 2px solid #000;
+    }
+  }
+}
+
+.invoice-items, .total-row {
+  width: 100%;
+  td {
+    &:nth-child(2) {
+      width: 75%;
+    }
+    &:nth-child(2) {
+      text-align: right;
+      width: 25%;
+    }
+  }
+}
+
+#paymentDetails {
+  td {
+    &:nth-child(1) {
+      text-align: right;
+    }
+    &:nth-child(2) {
+      font-weight: bold;
+    }
+  }
+}
