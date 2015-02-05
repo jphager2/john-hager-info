@@ -1,30 +1,24 @@
-class ProjectsController < ApplicationController
+class ProjectsController < AdminController
 
-  def create
-    unless signed_in?
-      redirect_to root_path 
-      return
-    end
+  skip_before_action :authenticate_user, only: [:show]
+  layout 'application', only: [:show]
 
-    unless params[:name]
-      @project = Project.new
+  before_action :set_project, except: [:index, :new, :create]
 
-      load_github_activity 
-      render 'create' 
-      return
-    else
-      Project.create(
-        name:        params[:name],
-        url:         params[:purl],
-        description: params[:description],
-      )
-      redirect_to controller: :pages, action: :portfolio 
-      return
-    end
+  def index
+    @projects = Project.all
   end
 
-  def read
-    @project = Project.find(params[:id])
+  def new
+    @project = Project.new
+  end
+
+  def create
+    Project.create(project_params)
+    redirect_to action: :index
+  end
+
+  def show
     respond_to do |f|
       f.html {}
       f.pdf do
@@ -33,38 +27,25 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    unless signed_in?
-      redirect_to root_path 
-      return
-    end
-
-    unless params[:name]
-      @project = Project.find(params[:id])
-
-      load_github_activity 
-      render 'edit' 
-      return
-    else
-      @project = Project.find(params[:id])
-      @project.update(
-        name:        params[:name],
-        url:         params[:purl],
-        description: params[:description],
-      )
-      redirect_to controller: :pages, action: :portfolio 
-    end
-
+    @project.update(project_params)
+    redirect_to action: :index
   end
 
   def destroy
-    unless signed_in?
-      redirect_to root_path 
-      return
-    end
+    @project.destroy
+    redirect_to action: :index
+  end
 
-    Project.destroy(params[:id])
+  private
+  def project_params
+    params.require(:project).permit(:name, :url, :description)
+  end
 
-    redirect_to root_path 
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

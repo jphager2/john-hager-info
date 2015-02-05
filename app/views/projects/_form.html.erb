@@ -1,0 +1,9 @@
+<%= form_for(@project, html: {class: "basic_form"}) do |f| %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.url_field :url %>
+  <br>
+  <%= f.text_area :description %>
+  <%= f.submit %>  
+<% end %>
+

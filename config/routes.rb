@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :clients
-
   resources :invoices
+  resources :projects
 
   root "pages#index"
 
@@ -14,15 +14,7 @@ Rails.application.routes.draw do
   get    'login',     to: "sessions#new"
   post   'login',     to: "sessions#create"
   delete 'logout',    to: "sessions#destroy", as: :logout
-  get    'admin',     to: "pages#admin", as: :admin
 
-  get  'projects/new',      to: "projects#create"
-  post 'projects/new',      to: "projects#create"
-  get  'projects/:id',      to: "projects#read"
-  get  'projects/edit/:id', to: "projects#update"
-  post 'projects/edit/:id', to: "projects#update"
-
-  delete 'projects/destroy/:id', to: "projects#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
