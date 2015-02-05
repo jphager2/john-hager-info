@@ -11,7 +11,7 @@
     </p>
   </div>
   <div class="small-6 columns text-right">
-    <%= wicked_pdf_image_tag('jh-logo.png', class: 'pdf-logo') %>
+    <%= wicked_pdf_image_tag('jh-logo-blk.png', class: 'pdf-logo') %>
   </div>
 </div>
 <div class="row">
@@ -57,7 +57,7 @@
   <br>
   <br>
   <p>
-    We kindly ask you to remit the total above, in Czech Koruna, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
+    We kindly ask you to remit the total above, in <%= @invoice.currency %>, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
   </p>
 </div>
 <div class="row">
