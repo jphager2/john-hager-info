@@ -1,0 +1,21 @@
+<table class="invoice-items no-style">
+  <thead>
+    <th><%= items.first.human_name %></th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <td>
+          <h6><%= item.title %></h6>
+          <p>
+            <em>Description: <%= item.description || 'N/A' %></em>
+          </p>
+        </td>
+        <td>
+          <%= number_to_currency(item.price, unit: item.currency) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

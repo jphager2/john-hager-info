@@ -1,0 +1,99 @@
+<% content_for(:title, @invoice.number) %>
+<div class="row">
+  <div class="small-6 columns text-left">
+    <h2>John Hager</h2>
+    <p>
+      Vodňanského 538/4<br>
+      169 00 Praha 69<br>
+      Czech Republic<br>
+      IČO: 02461340<br>
+      DIČ: CZ683366505
+    </p>
+  </div>
+  <div class="small-6 columns text-right">
+    <%= wicked_pdf_image_tag('jh-logo.png', class: 'pdf-logo') %>
+  </div>
+</div>
+<div class="row">
+  <table id="invoiceInfo" class="no-style">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <td>Invoice Date:</td>
+        <td><%= @invoice.date.strftime('%d-%m-%Y') %></td>
+      </tr>
+      <tr>
+        <td>Invoice No.:</td>
+        <td><%= @invoice.number %></td>
+      </tr>
+      <tr>
+        <td>Payment Due:</td>
+        <td><%= @invoice.due_date.strftime('%d-%m-%Y') %></td>
+        <td>Period Covered:</td>
+        <td><%= @invoice.period_covered_from.strftime('%d-%m-%Y') %></td>
+        <td> to </td>
+        <td><%= @invoice.period_covered_to.strftime('%d-%m-%Y') %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <%= render 'invoice_item_type', items: @invoice.service_items if @invoice.service_items.present? %>
+</div>
+<div class="row">
+  <%= render 'invoice_item_type', items: @invoice.expense_items if @invoice.expense_items.present? %>
+</div>
+<div class="row">
+  <table class="total-row no-style">
+    <tr>
+      <th>Total</th>
+      <td>
+        <%= number_to_currency(@invoice.price, unit: @invoice.currency) %>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="row">
+  <br>
+  <br>
+  <p>
+    We kindly ask you to remit the total above, in Czech Koruna, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
+  </p>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <h4>Payment Details:</h4>
+  </div>
+  <div class="small-8 columns small-offset-2 end">
+    <table id="paymentDetails" class="no-style">
+      <tr>
+        <td>Account Holder:</td>
+        <td>John Hager</td>
+      </tr>
+      <tr>
+        <td>IBAN:</td>
+        <td>CZ06 6210 6701 0022 1111 2298</td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td>Vodňanského 538/4</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>169 00 Praha 69</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Czech Republic</td>
+      </tr>
+      <tr>
+        <td>BIC/SWIFT:</td>
+        <td>BREXCZPP</td>
+      </tr>
+      <tr>
+        <td>Bank:</td>
+        <td>mBank</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -6,7 +6,7 @@
       <%= f.number_field :price %>
     </div>
     <div class="small-6 columns">
-      <%= f.select :currency, options_for_select(['USD','CZK','EUR']) %>
+      <%= f.select :currency, options_for_select(Invoice::Currencies) %>
     </div>
   </div>
 </div>
