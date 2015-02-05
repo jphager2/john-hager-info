@@ -1,9 +1,9 @@
 <h1>Listing invoices</h1>
 
 <h2>Editables</h2>
-<%= render 'invoices', invoices: @invoices.unpublished %>
+<%= render 'invoices', invoices: @unpublished %>
 <%= link_to '+ New Invoice', new_invoice_path %>
 <br>
 <br>
 <h2>Published</h2>
-<%= render 'invoices', invoices: @invoices.published %>
+<%= render 'invoices', invoices: @published %>

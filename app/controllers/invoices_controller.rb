@@ -4,7 +4,8 @@ class InvoicesController < AdminController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @published = Invoice.published
+    @unpublished = Invoice.unpublished
   end
 
   # GET /invoices/1
