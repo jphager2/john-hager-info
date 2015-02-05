@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'onedrive/login'
+
+  get 'onedrive/create'
+
   resources :clients
   resources :invoices
   resources :projects
@@ -14,6 +18,10 @@ Rails.application.routes.draw do
   get    'login',     to: "sessions#new"
   post   'login',     to: "sessions#create"
   delete 'logout',    to: "sessions#destroy", as: :logout
+
+  get 'onedrive', to: 'onedrive#create'
+  post 'onedrive', to: 'onedrive#create'
+  get 'onedrive/login', to: 'onedrive#new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
