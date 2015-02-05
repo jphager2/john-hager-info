@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>John Hager Info<%= "| #{yield(:title)}" if content_for?(:title) %></title>
+  <title>John Hager Info<%= " | #{yield(:title)}" if content_for?(:title) %></title>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
   <%= wicked_pdf_stylesheet_link_tag("application").gsub(/url\("\//, "url(\"file://#{Rails.root}/").html_safe %>
   <style>

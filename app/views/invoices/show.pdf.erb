@@ -11,7 +11,11 @@
     </p>
   </div>
   <div class="small-6 columns text-right">
-    <%= wicked_pdf_image_tag('jh-logo-blk.png', class: 'pdf-logo') %>
+    <% if @invoice.published? %>
+      <%= wicked_pdf_image_tag('jh-logo-blk.png', class: 'pdf-logo') %>
+    <% else %>
+      <%= image_tag('jh-logo-blk.png', class: 'pdf-logo') %>
+    <% end %>
   </div>
 </div>
 <div class="row">

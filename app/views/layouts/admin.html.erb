@@ -5,7 +5,9 @@
     <%= render 'layouts/nav' %>
       
     <div class="row">
-      <%= render 'layouts/main' %>
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
