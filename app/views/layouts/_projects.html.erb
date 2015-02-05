@@ -4,7 +4,7 @@
       <% @projects.each do |project| %>
         <li>
           <%= link_to project.url, target: "_blank" do %>
-            <%= image_tag asset_path(project.image) %>
+            <%= image_tag project.image %>
           <% end %>
           <h6 class="subheader"><%= project.name %></h6>
           <p>
