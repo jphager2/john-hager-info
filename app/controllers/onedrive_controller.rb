@@ -1,4 +1,4 @@
-class OnedriveController < ApplicationController
+class OnedriveController < AdminController
   def login
   end
 
