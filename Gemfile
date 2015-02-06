@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 
+# For URL parameter encoding
+gem 'addressable'
+
 # For nested attributes
 gem "cocoon"
 

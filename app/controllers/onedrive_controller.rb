@@ -1,3 +1,4 @@
+require 'addressable/uri'
 class OnedriveController < AdminController
   def login
   end
@@ -16,7 +17,8 @@ class OnedriveController < AdminController
 
   private 
   def curl(path, parameters, method)
-    path = "#{path}?#{CGI.escape(parameters)}"
+    encoded_params = Addressable::URI.new.query_values(parameters).query
+    path = "#{path}?#{encoded_params}"
     `curl #{path} -X #{method.to_s.upcase} -H "Content-Type: application/x-www-form-urlencoded"`
   end
 end
