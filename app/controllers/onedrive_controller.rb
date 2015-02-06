@@ -4,7 +4,7 @@ class OnedriveController < AdminController
 
   def create
     if params[:code].present?
-      {
+      parameters = {
         "CLIENT_ID" => ENV["ONEDRIVE_CLIENT_ID"],
         "REDIRECT_URI" => "http://www.john-hager.info/onedrive",
         "CLIENT_SECRET" => ENV["ONEDRIVE_CLIENT_SECRET"],
