@@ -12,7 +12,9 @@ class OnedriveController < AdminController
         "CLIENT_SECRET" => ENV["ONEDRIVE_CLIENT_SECRET"],
         "AUTHORIZATION_CODE" => params[:code],
       }
+      puts 'Posting to Onedrive'
       post('https://login.live.com/', 'oauth20_token.srf', args)
+      puts 'Post Done!'
     else
       params.each do |k,v|
         puts "#{k}:\t#{v}"
