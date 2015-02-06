@@ -21,6 +21,8 @@ class OnedriveController < AdminController
       f.request :url_encoded
       f.adapter Faraday.default_adapter
     end
-    conn.post(path, args)
+    conn.post(path, args) do |req|
+      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+    end
   end
 end
