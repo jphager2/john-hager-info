@@ -14,7 +14,7 @@ class OnedriveController < AdminController
       }
       puts 'Posting to Onedrive'
       res = post('https://login.live.com/', 'oauth20_token.srf', args)
-      params.merge(JSON.parse(res))
+      params.merge(JSON.parse(res).body)
       puts 'Post Done!'
     else
       params.each do |k,v|
