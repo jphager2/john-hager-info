@@ -13,7 +13,8 @@ class OnedriveController < AdminController
         "AUTHORIZATION_CODE" => params[:code],
       }
       puts 'Posting to Onedrive'
-      post('https://login.live.com/', 'oauth20_token.srf', args)
+      res = post('https://login.live.com/', 'oauth20_token.srf', args)
+      params.merge(JSON.parse(res))
       puts 'Post Done!'
     else
       params.each do |k,v|
