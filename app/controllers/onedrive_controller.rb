@@ -12,6 +12,10 @@ class OnedriveController < AdminController
         "AUTHORIZATION_CODE" => params[:code],
       }
       post('https://login.live.com/', 'oauth20_token.srf', args)
+    else
+      params.each do |k,v|
+        puts "#{k}:\t#{v}"
+      end
     end
   end
 
