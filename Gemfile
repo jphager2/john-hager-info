@@ -5,7 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 
 # For URL parameter encoding
-gem 'addressable'
+#gem 'addressable'
+
+# For requests
+gem 'faraday'
 
 # For nested attributes
 gem "cocoon"

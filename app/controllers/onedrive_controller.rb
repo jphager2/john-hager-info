@@ -1,24 +1,26 @@
-require 'addressable/uri'
+require 'faraday'
 class OnedriveController < AdminController
   def login
   end
 
   def create
     if params[:code].present?
-      parameters = {
+      args = {
         "CLIENT_ID" => ENV["ONEDRIVE_CLIENT_ID"],
         "REDIRECT_URI" => "http://www.john-hager.info/onedrive",
         "CLIENT_SECRET" => ENV["ONEDRIVE_CLIENT_SECRET"],
         "AUTHORIZATION_CODE" => params[:code],
       }
-      curl('https://login.live.com/oauth20_token.srf',parameters,:post)
+      post('https://login.live.com/', 'oauth20_token.srf', args)
     end
   end
 
   private 
-  def curl(path, parameters, method)
-    encoded_params = Addressable::URI.new.query_values(parameters).query
-    path = "#{path}?#{encoded_params}"
-    `curl #{path} -X #{method.to_s.upcase} -H "Content-Type: application/x-www-form-urlencoded"`
+  def post(host, path, args)
+    conn = Faraday.new(url: host)  do |f|
+      f.request :url_encoded
+      f.adapter Faraday.default_adapter
+    end
+    conn.post(path, args)
   end
 end
