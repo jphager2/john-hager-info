@@ -15,7 +15,7 @@ class AdminController < ApplicationController
   def set_client
     if session[:access_token] 
       access_token = @auth
-        .get_access_token_from_hash(session[:access_token])
+        .get_access_token_from_hash(current_user.od_token)
       @client = Skydrive::Client.new(access_token)
     else
       flash[:notice] = "Login to Onedrive Failed"

@@ -11,7 +11,7 @@ class OnedriveController < AdminController
     if params[:code].present?
       @access_token = @auth.get_access_token(params[:code])
       if @access_token
-        session[:access_token] = @access_token.token
+        current_user.update(od_token: @access_token.token)
         flash[:notice] = "Successfully logged in"
       end
       redirect_to root_path
