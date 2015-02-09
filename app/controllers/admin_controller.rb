@@ -4,6 +4,7 @@ class AdminController < ApplicationController
 
   around_action :log_exceptions
   before_action :authenticate_user
+  before_action :set_auth
   before_action :set_client
 
   private
@@ -13,10 +14,17 @@ class AdminController < ApplicationController
 
   def set_client
     if session[:access_token] 
-      @client = Skydrive::Client.new(session[:access_token])
+      access_token = @auth
+        .get_access_token_from_hash(session[:access_token])
+      @client = Skydrive::Client.new(access_token)
     else
-      redirect_to controller: :onedrive, action: :login
+      flash[:notice] = "Login to Onedrive Failed"
+      redirect_to root_path
     end
+  end
+
+  def set_auth
+    @auth = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
   end
 
   def log_exceptions
