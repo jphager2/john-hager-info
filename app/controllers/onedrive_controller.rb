@@ -5,6 +5,14 @@ class OnedriveController < AdminController
 
   def login
     redirect_to @auth.authorize_url 
+  rescue Object => e
+    puts "=*" * 30 
+    puts "=*" * 30 
+    puts "=*" * 30 
+    puts e, e.message
+    puts "=*" * 30 
+    puts "=*" * 30 
+    puts "=*" * 30 
   end
 
   def create
