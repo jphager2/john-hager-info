@@ -13,6 +13,8 @@ class OnedriveController < AdminController
       if @access_token
         current_user.update(od_token: @access_token.token)
         flash[:notice] = "Successfully logged in"
+      else 
+        puts "FAILED TO GET ACCESS TOKEN!!!"
       end
       redirect_to root_path
     end

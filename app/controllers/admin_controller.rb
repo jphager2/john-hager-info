@@ -13,7 +13,7 @@ class AdminController < ApplicationController
   end
 
   def set_client
-    if session[:access_token] 
+    if current_user.od_token
       access_token = @auth
         .get_access_token_from_hash(current_user.od_token)
       @client = Skydrive::Client.new(access_token)
