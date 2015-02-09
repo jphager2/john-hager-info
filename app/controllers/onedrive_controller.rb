@@ -11,8 +11,8 @@ class OnedriveController < AdminController
 
   def create
     if params[:code].present?
-      @access_token = @auth.get_access_token(params[:code])
-      session[:access_token] = @access_token
+      #@access_token = @auth.get_access_token(params[:code])
+      #session[:access_token] = @access_token
     elsif params[:refresh_token].present?
       30.times { puts "=*" * 30 } 
     end
