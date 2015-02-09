@@ -11,11 +11,8 @@ class AdminController < ApplicationController
   end
 
   def set_client
-    if session[:access_token] 
-      @client = Skydrive::Oauth::Client(session[:access_token])
-    else
-      @client = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
-    end
+    session[:access_token] or redirect_to controller: :onedrive, action: :login
+    @client = Skydrive::Client.new(session[:access_token])
   end
 
 end
