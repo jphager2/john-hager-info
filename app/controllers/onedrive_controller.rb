@@ -1,36 +1,20 @@
 require 'faraday'
 class OnedriveController < AdminController
   skip_before_action :authenticate_user
+  before_action :set_client
+
   def login
+    redirect_to @client.authorize_url 
   end
 
   def create
     if params[:code].present?
-      args = {
-        "CLIENT_ID" => ENV["ONEDRIVE_CLIENT_ID"],
-        "REDIRECT_URI" => "http://www.john-hager.info/onedrive",
-        "CLIENT_SECRET" => ENV["ONEDRIVE_CLIENT_SECRET"],
-        "AUTHORIZATION_CODE" => params[:code],
-      }
-      puts 'Posting to Onedrive'
-      res = post('https://login.live.com/', 'oauth20_token.srf', args)
-      params.merge(JSON.parse(res.body))
-      puts 'Post Done!'
-    else
-      params.each do |k,v|
-        puts "#{k}:\t#{v}"
-      end
+      @access_token = @client.get_access_token(params[:code])
     end
   end
 
   private 
-  def post(host, path, args)
-    conn = Faraday.new(url: host)  do |f|
-      f.request :url_encoded
-      f.adapter Faraday.default_adapter
-    end
-    conn.post(path, args) do |req|
-      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-    end
+  def set_client
+    @client = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
   end
 end

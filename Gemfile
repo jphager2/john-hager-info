@@ -10,6 +10,9 @@ gem 'rails', '4.1.6'
 # For requests
 gem 'faraday'
 
+# For Onedrive
+gem 'skydrive'
+
 # For nested attributes
 gem "cocoon"
 
