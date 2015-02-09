@@ -10,6 +10,10 @@ class OnedriveController < AdminController
   def create
     if params[:code].present?
       @access_token = @client.get_access_token(params[:code])
+      puts '+=' * 50
+      puts @access_token
+      puts @client.to_s
+      puts '+=' * 50
     end
   end
 
