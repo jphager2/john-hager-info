@@ -11,8 +11,10 @@ class AdminController < ApplicationController
   end
 
   def set_client
-    session[:access_token] or redirect_to controller: :onedrive, action: :login
-    @client = Skydrive::Client.new(session[:access_token])
+    if session[:access_token] 
+      @client = Skydrive::Client.new(session[:access_token])
+    else
+      redirect_to controller: :onedrive, action: :login
+    end
   end
-
 end

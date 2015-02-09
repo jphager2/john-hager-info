@@ -1,6 +1,7 @@
 require 'faraday'
 class OnedriveController < AdminController
   skip_before_action :authenticate_user
+  skip_before_action :set_client, only: :login
 
   def login
     auth = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
