@@ -15,9 +15,7 @@ gem 'faraday'
 #  gem 'skydrive', path: '~/projects/ruby/skydrive'
 #end
 
-group :production do
-  gem 'skydrive', git: 'https://github.com/jphager2/skydrive.git', branch: 'stable'
-end
+gem 'skydrive', git: 'https://github.com/jphager2/skydrive.git', branch: 'stable'
 
 # For nested attributes
 gem "cocoon"

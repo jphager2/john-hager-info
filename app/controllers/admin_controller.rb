@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   around_action :log_exceptions
   before_action :authenticate_user
   before_action :set_auth
-  before_action :set_client
+  before_action :set_client, if: Proc.new { Rails.env == 'Production' }
 
   private
   def authenticate_user
@@ -34,5 +34,6 @@ class AdminController < ApplicationController
     puts 'Error Caught in Admin Controller'
     puts e, e.message
     puts "\n" * 3
+    raise
   end
 end
