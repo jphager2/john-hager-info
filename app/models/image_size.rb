@@ -9,8 +9,8 @@ class ImageSize < ActiveRecord::Base
     size = object["images"].find {|i| i["type"] == self.od_type}
     if size 
       self.create(
-        image_id: image_id, height: normal["height"],  
-        width: normal["width"], source: normal["source"]
+        image_id: image_id, height: size["height"],  
+        width: size["width"], source: size["source"]
       )
     end
   end
