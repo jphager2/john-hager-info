@@ -23,10 +23,8 @@ class Image < ActiveRecord::Base
   end
 
   def self.upload(client, file, filename = file.try(:original_filename))
-    #created = client.upload(ALBUM_PATH, URI::encode(filename), file)
-    # REWRITE client.upload or create a client.upload_image or something
-    created = client.class.put("/#{ALBUM_PATH}/files/#{URI::encode(filename)}", {body: file.read, headers: {'Content-Type' => '' }})
-    #return false unless created
+    created = client.upload(ALBUM_PATH, URI::encode(filename), file)
+    return false unless created
     item = client.get_skydrive_object_by_id(ALBUM_PATH).files.items
       .find { |item| item.object["name"] == filename } 
     object = item.object
