@@ -52,7 +52,7 @@ class ProjectsController < AdminController
   end
 
   def create_project_image
-    image = Image.upload(@client, project_params[:image])
+    image = Image.upload(@client, params[:project].delete(:image))
     @project.image_id = image.id if image
   end
 end
