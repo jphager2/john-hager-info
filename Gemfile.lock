@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/jphager2/skydrive.git
+  revision: 4720725aee6ddf5b05aff39020c94f43208bd98b
+  branch: stable
+  specs:
+    skydrive (1.0.1)
+      activesupport
+      httmultiparty
+      httparty (>= 0.11.0)
+      oauth2 (>= 0.9.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -127,11 +138,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    skydrive (1.0.0)
-      activesupport
-      httmultiparty
-      httparty (>= 0.11.0)
-      oauth2 (>= 0.9.2)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -186,7 +192,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  skydrive
+  skydrive!
   spring
   thin
   turbolinks

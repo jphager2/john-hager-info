@@ -11,7 +11,7 @@ gem 'rails', '4.1.6'
 gem 'faraday'
 
 # For Onedrive
-gem 'skydrive'
+gem 'skydrive', git: 'https://github.com/jphager2/skydrive.git', branch: 'stable'
 
 # For nested attributes
 gem "cocoon"
