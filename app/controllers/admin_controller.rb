@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   around_action :log_exceptions
   before_action :authenticate_user
   before_action :set_auth
-  before_action :set_client, if: Proc.new { Rails.env == 'Production' }
+  before_action :set_client#, if: Proc.new { Rails.env == 'Production' }
 
   private
   def authenticate_user
