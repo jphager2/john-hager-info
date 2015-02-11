@@ -13,19 +13,20 @@ class AdminController < ApplicationController
   end
 
   def set_client
-    puts 'SETTING CLIENT'
-    if current_user.od_token
-      access_token = @auth
-        .get_access_token_from_hash(current_user.od_token)
-      @client = Skydrive::Client.new(access_token)
+    if @client = current_user.od_client 
+      begin 
+        @client.my_skydrive # replace with the smallest request
+        return @client
+      rescue Skydrive::Error => e
+        flash[:notice] = "Token Expired" if e.code == "http_error_401" 
+      end
     else
       flash[:notice] = "Login to Onedrive Failed"
-      redirect_to root_path
     end
+    redirect_to onedrive_login_path
   end
 
   def set_auth
-    puts 'SETTING AUTH'
     @auth = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
   end
 

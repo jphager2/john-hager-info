@@ -15,6 +15,10 @@ class ImageSize < ActiveRecord::Base
     end
   end
 
+  def update_from_object(object)
+    self.update(source: object["source"])
+  end
+
   def self.od_type
     ''
   end

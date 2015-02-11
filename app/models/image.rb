@@ -46,5 +46,13 @@ class Image < ActiveRecord::Base
 
   def update_data(client)
     # update the data in the image with current data on skydrive
+    item = client.get_skydrive_object_by_id(od_id)
+    return false unless item
+    object = item.object
+    self.update(name: object["name"], description: object["description"])
+    self.normal.update_from_object(object)
+    self.album.update_from_object(object)
+    self.thumbnail.update_from_object(object)
+    self.full.update_from_object(object)
   end
 end

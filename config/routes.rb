@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get 'onedrive', to: 'onedrive#create'
   post 'onedrive', to: 'onedrive#create'
-  get 'onedrive/login', to: 'onedrive#new'
+  get 'onedrive/login', to: 'onedrive#new', as: :onedrive_login
 
 
   # The priority is based upon order of creation: first created -> highest priority.
