@@ -15,7 +15,7 @@ class ProjectsController < AdminController
 
   def create
     @project = Project.create(project_params)
-    create_project_image if project_params[:image]
+    create_project_image if params[:project][:image]
     redirect_to action: :index
   end
 
@@ -32,8 +32,8 @@ class ProjectsController < AdminController
   end
 
   def update
-    create_project_image if project_params[:image]
     @project.update(project_params)
+    create_project_image if project_params[:image]
     redirect_to action: :index
   end
 
@@ -44,7 +44,7 @@ class ProjectsController < AdminController
 
   private
   def project_params
-    params.require(:project).permit(:name, :url, :description, :image)
+    params.require(:project).permit(:name, :url, :description)
   end
 
   def set_project
@@ -52,7 +52,7 @@ class ProjectsController < AdminController
   end
 
   def create_project_image
-    image = Image.upload(@client, params[:project].delete(:image))
+    image = Image.upload(@client, params[:project][:image])
     image.update_attribute(:project_id, @project.id) if image
   end
 end
