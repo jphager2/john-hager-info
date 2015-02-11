@@ -3,7 +3,7 @@ class OnedriveController < AdminController
   skip_before_action :authenticate_user, only: :create
   skip_before_action :set_client
 
-  def login
+  def new 
     redirect_to @auth.authorize_url 
   end
 
