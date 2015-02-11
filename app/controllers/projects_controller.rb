@@ -14,8 +14,8 @@ class ProjectsController < AdminController
   end
 
   def create
+    @project = Project.create(project_params)
     create_project_image if project_params[:image]
-    Project.create(project_params)
     redirect_to action: :index
   end
 
