@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'onedrive/login'
-
-  get 'onedrive/create'
-
   resources :clients
   resources :invoices
   resources :projects

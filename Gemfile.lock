@@ -1,7 +1,5 @@
-GIT
-  remote: https://github.com/jphager2/skydrive.git
-  revision: 56f94d3ad77e6ad2e1406329eea0609922c6dd9b
-  branch: stable
+PATH
+  remote: ~/projects/ruby/skydrive
   specs:
     skydrive (1.0.2)
       activesupport
