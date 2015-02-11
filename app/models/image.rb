@@ -1,10 +1,16 @@
 class Image < ActiveRecord::Base
   ALBUM_PATH = 'folder.d1d76abfa84f5934.D1D76ABFA84F5934!135'
   
+  DATA_TYPES = { "jpeg" => 'data/jpeg', "jpg" => 'data/jpeg', "png" => 'data/png' }
+
   has_one :normal_size
   has_one :album_size
   has_one :thumbnail_size
   has_one :full_size
+
+  def data_type
+    DATA_TYPES[self.name.slice(/(\.(\w+))?$/, 2).downcase]
+  end
 
   def normal
     self.normal_size
