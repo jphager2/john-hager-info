@@ -42,6 +42,11 @@ class ProjectsController < AdminController
     redirect_to action: :index
   end
 
+  def update_image
+    @project.image.update_data(@client)
+    redirect_to action: :index
+  end
+
   private
   def project_params
     params.require(:project).permit(:name, :url, :description)
