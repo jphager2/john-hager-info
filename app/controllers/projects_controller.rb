@@ -43,7 +43,7 @@ class ProjectsController < AdminController
   end
 
   def update_image
-    puts @project.image.update_data(@client)
+    @project.image.update_data(@client)
     redirect_to action: :index
   end
 
