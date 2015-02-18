@@ -10,14 +10,15 @@ gem 'rails', '4.1.6'
 # For requests
 gem 'faraday'
 
+gem 'skydrive'
 # For Onedrive
 #group :development do
 #  gem 'skydrive', path: '~/projects/ruby/skydrive'
 #end
 
-group :production do
-  gem 'skydrive', git: 'https://github.com/jphager2/skydrive.git', branch: 'stable'
-end
+#group :production do
+#  gem 'skydrive', git: 'https://github.com/jphager2/skydrive.git', branch: 'stable'
+#end
 
 # For nested attributes
 gem "cocoon"
