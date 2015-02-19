@@ -3,10 +3,10 @@
   <%= f.text_area :description %>
   <div class="row">
     <div class="small-6 columns">
-      <%= f.number_field :price %>
+      <%= f.number_field :price, step: 'any' %>
     </div>
     <div class="small-6 columns">
-      <%= f.select :currency, options_for_select(Invoice::Currencies) %>
+      <%= f.select :currency, Invoice::Currencies %>
     </div>
   </div>
 </div>

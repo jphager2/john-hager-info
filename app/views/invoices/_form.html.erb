@@ -4,7 +4,7 @@
       <%= f.collection_select :client_id, Client.all, :id, :name %>
     </div>
     <div class="small-3 columns">
-      <%= f.select :currency, options_for_select(Invoice::Currencies) %>
+      <%= f.select :currency, Invoice::Currencies %>
     </div>
   </div>
   <% unless params[:action] == 'new' %>

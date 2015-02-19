@@ -1,7 +1,7 @@
-require 'faraday'
 class OnedriveController < AdminController
   skip_before_action :authenticate_user, only: :create
-  skip_before_action :set_client
+
+  before_action :set_auth
 
   def new 
     redirect_to @auth.authorize_url 
@@ -18,5 +18,10 @@ class OnedriveController < AdminController
       end
       redirect_to root_path
     end
+  end
+
+  private
+  def set_auth
+    @auth = Skydrive::Oauth::Client.new(ENV["ONEDRIVE_CLIENT_ID"], ENV["ONEDRIVE_CLIENT_SECRET"], "http://www.john-hager.info/onedrive", "wl.skydrive_update,wl.offline_access")
   end
 end

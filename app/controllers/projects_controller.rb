@@ -1,9 +1,10 @@
-class ProjectsController < AdminController
+class ProjectsController < OnedriveClientController
 
   skip_before_action :authenticate_user, only: [:show]
   layout 'application', only: [:show]
 
   before_action :set_project, except: [:index, :new, :create]
+  before_action :set_client, only: [:index, :new, :edit]
 
   def index
     @projects = Project.all
