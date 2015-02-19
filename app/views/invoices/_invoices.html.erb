@@ -16,7 +16,7 @@
         <td><%= invoice.number %></td>
         <td><%= invoice.date.strftime('%d-%m-%Y') %></td>
         <td><%= invoice.due_date.strftime('%d-%m-%Y') %></td>
-        <td><%= invoice.price %></td>
+        <td><%= number_to_currency(invoice.price, unit: invoice.currency) %></td>
         <% if published %>
           <td><%= link_to 'Download', invoice_path(id: invoice.id, format: :pdf) %></td>
         <% else %>
