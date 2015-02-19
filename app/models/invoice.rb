@@ -9,7 +9,7 @@ class Invoice < ActiveRecord::Base
   before_validation :set_number
 
   validates :client_id, presence: true
-  validates :date, presence: true
+  #validates :date, presence: true
   validates :period_covered_from, presence: true
   validates :period_covered_to, presence: true
   validates :number, uniqueness: true
@@ -58,11 +58,15 @@ class Invoice < ActiveRecord::Base
   end
 
   def ensure_invoice_year
-    self.invoice_year = self.date.year unless self.invoice_year
+    if date = self.date 
+      self.invoice_year = date.year unless self.invoice_year
+    else
+      errors.add(:date, :blank)
+    end
   end
 
   def ensure_invoice_count
-    unless self.invoice_count
+    unless self.invoice_count || self.errors.any?
       client_invoices = Invoice
         .where(invoice_year: self.invoice_year).where.not(id: self.id)
         .where(client_id: self.client_id).order(:invoice_count)
