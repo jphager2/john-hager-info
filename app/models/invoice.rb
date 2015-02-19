@@ -64,7 +64,9 @@ class Invoice < ActiveRecord::Base
   end
 
   def ensure_due_date!
-    self.due_date = (self.date + 30) unless self.due_date
+    unless self.due_date
+      self.due_date = self.date + (self.credit_note? ? 0 : 30)
+    end
   end
 
   def ensure_currency!

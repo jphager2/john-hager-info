@@ -62,7 +62,7 @@
   <br>
   <p>
     <% if @invoice.credit_note? %>
-      This credit note takes immediate affect from <%= @invoice.date.strftime('%d-%m-%Y') %>.
+      This credit note takes immediate affect from <%= @invoice.due_date.strftime('%d-%m-%Y') %>.
     <% else %>
       We kindly ask you to remit the total above, in <%= @invoice.currency %>, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
     <% end %>
