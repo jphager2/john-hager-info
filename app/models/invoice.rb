@@ -38,6 +38,10 @@ class Invoice < ActiveRecord::Base
     self.credit_note
   end
 
+  def in_currency(cur)
+    convert_currency(self.price, self.currency, cur)
+  end
+
   private
   def credit_note_price_not_positive
     total_price!
