@@ -1,4 +1,8 @@
-<h1>New invoice</h1>
+<% if @invoice.credit_note? %>
+  <h1>New credit note</h1>
+<% else %>
+  <h1>New invoice</h1>
+<% end %>
 
 <%= render 'form' %>
 

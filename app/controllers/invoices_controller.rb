@@ -26,6 +26,7 @@ class InvoicesController < AdminController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+    @invoice.credit_note = true if params[:credit_note] == '1'
   end
 
   # GET /invoices/1/edit
@@ -81,6 +82,6 @@ class InvoicesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:number, :invoice_year, :invoice_count, :date, :due_date, :period_covered_from, :period_covered_to, :price, :client_id, :client_code, :published, :currency, service_items_attributes: [:id, :title, :description, :price, :currency, :_destroy], expense_items_attributes: [:id, :title, :description, :price, :currency, :_destroy])
+      params.require(:invoice).permit(:credit_note, :number, :invoice_year, :invoice_count, :date, :due_date, :period_covered_from, :period_covered_to, :price, :client_id, :client_code, :published, :currency, service_items_attributes: [:id, :title, :description, :price, :currency, :_destroy], expense_items_attributes: [:id, :title, :description, :price, :currency, :_destroy])
     end
 end

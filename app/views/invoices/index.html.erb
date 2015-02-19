@@ -3,6 +3,7 @@
 <h2>Editables</h2>
 <%= render 'invoices', invoices: @unpublished unless @unpublished.empty? %>
 <%= link_to '+ New Invoice', new_invoice_path %>
+<%= link_to '+ New Credit Note', new_invoice_path(credit_note: 1) %>
 <br>
 <br>
 <h2>Published</h2>
