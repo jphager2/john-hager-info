@@ -61,7 +61,11 @@
   <br>
   <br>
   <p>
-    We kindly ask you to remit the total above, in <%= @invoice.currency %>, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
+    <%= if @invoice.credit_note? %>
+      This credit note takes immediate affect from <%= @invoice.date.strftime('%d-%m-%Y') %>.
+    <% else %>
+      We kindly ask you to remit the total above, in <%= @invoice.currency %>, within 30 days of the invoice date. Payments made after this period may be subject to penalty.
+    <% end %>
   </p>
 </div>
 <div class="row">
