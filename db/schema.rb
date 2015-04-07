@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407121854) do
+ActiveRecord::Schema.define(version: 20150407135059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20150407121854) do
     t.string   "state"
     t.string   "zip"
     t.string   "country"
+    t.string   "registration_no"
+    t.string   "tax_no"
   end
 
   create_table "image_sizes", force: true do |t|

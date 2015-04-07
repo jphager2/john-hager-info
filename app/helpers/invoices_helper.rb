@@ -7,7 +7,9 @@ module InvoicesHelper
         client.address1, 
         client.address2, 
         city_state_zip_line(client),
-        client.country
+        client.country,
+        client.registration_no,
+        client.tax_no
       ]
         .select {|attr| !attr.blank? }.each do |line|
           concat line
