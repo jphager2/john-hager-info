@@ -45,6 +45,8 @@ class ClientsController < AdminController
     respond_to do |format|
       if @client.update(client_params)
         @client_params = client_params
+        pp @client.attributes
+        pp @client_params
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
