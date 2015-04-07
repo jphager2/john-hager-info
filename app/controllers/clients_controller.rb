@@ -1,3 +1,4 @@
+require 'pp'
 class ClientsController < AdminController
   before_action :authenticate
   before_action :set_client, only: [:show, :edit, :update, :destroy]
@@ -43,6 +44,7 @@ class ClientsController < AdminController
   def update
     respond_to do |format|
       if @client.update(client_params)
+        @client_params = client_params
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { render :show, status: :ok, location: @client }
       else
