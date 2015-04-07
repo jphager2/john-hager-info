@@ -1,4 +1,6 @@
 class Client < ActiveRecord::Base
+  has_many :invoices
+
   validates :name, presence: true, length: { minimum: 3 }
   validates :code, length: { maximum: 6 }
 

@@ -9,6 +9,8 @@
       IČO: 02461340<br>
       DIČ: CZ683366505
     </p>
+    <strong>Client Info: </strong>
+    <%= address_for(@invoice.client) %>
   </div>
   <div class="small-6 columns text-right">
     <% if @invoice.published? %>

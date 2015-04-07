@@ -2,6 +2,7 @@ class Invoice < ActiveRecord::Base
   Currencies = %w( CZK USD EUR )
   has_many :service_items, dependent: :destroy
   has_many :expense_items, dependent: :destroy
+  belongs_to :client
 
   accepts_nested_attributes_for :service_items, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :expense_items, reject_if: :all_blank, allow_destroy: true

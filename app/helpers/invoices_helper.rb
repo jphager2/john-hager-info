@@ -3,7 +3,10 @@ module InvoicesHelper
   def address_for(client)
     content_tag(:p) do 
       [
-        client.address1, client.address2, city_state_zip_line(client),
+        client.name,
+        client.address1, 
+        client.address2, 
+        city_state_zip_line(client),
         client.country
       ]
         .select {|attr| !attr.blank? }.each do |line|
