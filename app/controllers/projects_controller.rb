@@ -4,7 +4,7 @@ class ProjectsController < OnedriveClientController
   layout 'application', only: [:show]
 
   before_action :set_project, except: [:index, :new, :create]
-  before_action :set_client, only: [:index, :new, :edit]
+  before_action :set_client, only: [:create, :update, :update_image]
 
   def index
     @projects = Project.all
