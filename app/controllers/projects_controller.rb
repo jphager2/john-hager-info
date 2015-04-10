@@ -3,7 +3,7 @@ class ProjectsController < OnedriveClientController
   skip_before_action :authenticate_user, only: [:show]
   layout 'application', only: [:show]
 
-  before_action :set_project, except: [:index, :new, :create]
+  before_action :set_project, except: [:index, :new, :create, :update_all_images]
   before_action :set_client, only: [:create, :update, :update_image, :update_all_images]
 
   def index

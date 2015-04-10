@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   post 'onedrive', to: 'onedrive#create'
   get 'onedrive/login', to: 'onedrive#new', as: :onedrive_login
 
+  get 'projects/all/update_all_images', to: 'projects#update_all_images', as: :update_all_project_images
   get 'projects/:id/update_image', to: 'projects#update_image', as: :update_project_image
-  get 'projects/update_all_images', to: 'projects#update_all_images', as: :update_all_project_images
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

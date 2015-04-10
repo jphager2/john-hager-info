@@ -3,7 +3,7 @@ module PagesHelper
 
   def load_github_activity 
     api_request_uri = 'https://api.github.com/users/jphager2/events/public'
-    api_response = JSON(open(api_request_uri).read)
+    api_response = JSON(open(api_request_uri, read_timeout: 2).read)
     @events  = GithubEvents.generate(api_response[0..4]) 
   rescue Object => error
     STDERR.puts (
