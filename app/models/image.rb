@@ -55,4 +55,8 @@ class Image < ActiveRecord::Base
     self.thumbnail.update_from_object(object)
     self.full.update_from_object(object)
   end
+
+  def self.update_all_data(client)
+    Image.all.each { |image| image.update_data(client) }
+  end
 end

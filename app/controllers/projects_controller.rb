@@ -4,7 +4,7 @@ class ProjectsController < OnedriveClientController
   layout 'application', only: [:show]
 
   before_action :set_project, except: [:index, :new, :create]
-  before_action :set_client, only: [:create, :update, :update_image]
+  before_action :set_client, only: [:create, :update, :update_image, :update_all_images]
 
   def index
     @projects = Project.all
@@ -45,6 +45,11 @@ class ProjectsController < OnedriveClientController
 
   def update_image
     @project.image.update_data(@client)
+    redirect_to action: :index
+  end
+
+  def update_all_images
+    Image.update_all_data(@client)
     redirect_to action: :index
   end
 
