@@ -110,7 +110,7 @@ module PagesHelper
       end
 
       def labels
-        labels = commit['labels'].map {|label| label["name"]}
+        labels = item['labels'].map {|label| label["name"]}
         "; labels: #{labels.join(', ')}" unless labels.empty?
       end
     end
