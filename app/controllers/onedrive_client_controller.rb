@@ -4,7 +4,8 @@ class OnedriveClientController < AdminController
   def set_client
     if @client = current_user.od_client
       begin 
-        @client.my_skydrive # replace with the smallest request
+        # replace with the smallest request
+        @client.my_skydrive 
         return @client
       rescue Skydrive::Error => e
         flash[:notice] = "Token Expired" if e.code == "http_error_401" 

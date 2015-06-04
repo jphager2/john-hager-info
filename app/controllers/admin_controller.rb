@@ -18,5 +18,8 @@ class AdminController < ApplicationController
     puts e, e.message
     puts "\n" * 3
     raise
+  rescue Skydrive::Error => e
+    flash[:notice] = "Token Expired" if e.code == "http_error_401" 
+    redirect_to onedrive_login_path
   end
 end
