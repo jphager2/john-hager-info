@@ -25,3 +25,6 @@
 
 # Ignore Secrets
 #/config/secrets.yml
+
+.ruby-version.*
+.ruby-gemset.*
