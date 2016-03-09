@@ -11,50 +11,56 @@ end
 
 namespace :pg do
 
+  desc 'list all backups'
   task :list do
-    puts `heroku pgbackups`
+    puts Bundler.with_clean_env { `heroku pg:backups` }
   end
 
+  desc 'destroy a backup, e.g. `rake pg:destroy b999`'
   task :destroy, [:id] do |t, args|
     id    = args[:id]
-    list  = `heroku pgbackups`
+    list  = Bundler.with_clean_env { `heroku pg:backups` }
     match = list.split("\n").drop(2).any? do |line| 
       line.split("\s").first == id
     end
     if match
-      puts `heroku pgbackups:destroy #{id}`
+      puts Bundler.with_clean_env { 
+        `heroku pg:backups delete #{id}`
+      }
     else
       puts "There is no backup named: #{id}"
     end
   end
 
+  desc 'backup the database'
   task :backup do
-    response = `heroku pgbackups:capture`
+    response = Bundler.with_clean_env { 
+      `heroku pg:backups capture`
+    }
     if response.include?('delete a backup before creating a new one')
       puts response
       exit 1
     end
   end
 
+  desc 'download the latest database backup'
   task :dump do
     backup_path = Rails.root.join('db', "latest-#{Time.now.to_i}.dump")
-    backup_url  = `heroku pgbackups:url`
+    backup_url  = Bundler.with_clean_env {
+      `heroku pg:backups public-url`
+    }
     file        = open(backup_url, PGUtils::HEADERS).read
-    #response = `curl -o #{backup_path} #{backup_url}`
-    #
-    #latest = Dir[Rails.root.join('db').to_s + '/latest-*.dump'].last
-    #unless File.read(latest)[0..5] == 'PGDMP'
     filename = if file[0..4] == 'PGDMP'
       backup_path
     else
       puts 'Sorry, something when wrong. The dump was not downloaded'
-      #FileUtils.mv backup_path, backup_path.sub(/latest/, 'error')
       backup_path.sub(/latest/, 'error')
     end
 
     File.open(filename, 'wb') {|f| f.write(file)}
   end
 
+  desc 'replace the database with the latest dump'
   task :restore do
     config  = Rails.configuration.database_configuration[Rails.env]
 
