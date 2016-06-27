@@ -8,7 +8,8 @@ class Client < ActiveRecord::Base
 
   private 
   def ensure_code
-    self.code = self.name.first(3) unless self.code.present?
-    self.code.upcase!
+    self.code = name.first(3) if code.blank?
+
+    code.upcase!
   end
 end

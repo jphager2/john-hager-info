@@ -1,13 +1,13 @@
-class ProjectsController < OnedriveClientController
+class ProjectsController < AdminController
 
   skip_before_action :authenticate_user, only: [:show]
+  before_action :set_project, except: [:index, :new, :create]
+
   layout 'application', only: [:show]
 
-  before_action :set_project, except: [:index, :new, :create, :update_all_images]
-  before_action :set_client, except: [:index]
 
   def index
-    @projects = Project.all
+    @projects = Project.by_updated
   end
 
   def new
@@ -16,7 +16,6 @@ class ProjectsController < OnedriveClientController
 
   def create
     @project = Project.create(project_params)
-    create_project_image if params[:project][:image]
     redirect_to action: :index
   end
 
@@ -34,22 +33,11 @@ class ProjectsController < OnedriveClientController
 
   def update
     @project.update(project_params)
-    create_project_image if project_params[:image]
     redirect_to action: :index
   end
 
   def destroy
     @project.destroy
-    redirect_to action: :index
-  end
-
-  def update_image
-    @project.image.update_data(@client)
-    redirect_to action: :index
-  end
-
-  def update_all_images
-    Image.update_all_data(@client)
     redirect_to action: :index
   end
 
@@ -60,10 +48,5 @@ class ProjectsController < OnedriveClientController
 
   def set_project
     @project = Project.find(params[:id])
-  end
-
-  def create_project_image
-    image = Image.upload(@client, params[:project][:image])
-    image.update_attribute(:project_id, @project.id) if image
   end
 end

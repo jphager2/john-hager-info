@@ -12,7 +12,7 @@ class InvoiceItem < ActiveRecord::Base
 
   private
   def ensure_currency
-    self.currency ||= Invoice::Currencies.first
+    self.currency = Invoice::Currencies.first if currency.blank?
   end
 
   def ensure_price

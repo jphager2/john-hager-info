@@ -5,8 +5,9 @@
     <%= render 'layouts/nav' %>
     
     <div class="row">
-      <% @disqus = "layouts/disqus_large" %>
-      <%= render 'layouts/main' %>
+      <div class="large-8 columns">
+        <%= yield %>
+      </div>
       <%= render 'layouts/github_side' %>
 
     </div>

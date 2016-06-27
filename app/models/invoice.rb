@@ -1,7 +1,10 @@
 class Invoice < ActiveRecord::Base
+
   Currencies = %w( CZK USD EUR )
+
   has_many :service_items, dependent: :destroy
   has_many :expense_items, dependent: :destroy
+
   belongs_to :client
 
   accepts_nested_attributes_for :service_items, reject_if: :all_blank, allow_destroy: true
@@ -10,7 +13,7 @@ class Invoice < ActiveRecord::Base
   before_validation :set_number!
 
   validates :client_id, presence: true
-  #validates :date, presence: true
+  validates :date, presence: true
   validates :period_covered_from, presence: true
   validates :period_covered_to, presence: true
   validates :number, uniqueness: true
@@ -19,36 +22,31 @@ class Invoice < ActiveRecord::Base
 
   before_save :ensure_due_date!
   before_save :ensure_currency!
-  #before_save :total_price
-
-  after_save :freeze_if_published!
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where.not(published: true) }
-
-  def initialize(attributes = {})
-    super
-    freeze_if_published! if self.persisted?
-  end
-
-  def published?
-    self.published
-  end
-
-  def credit_note?
-    self.credit_note
-  end
+  scope :by_date, -> { order(date: :desc) }
 
   def in_currency(cur)
     convert_currency(self.price, self.currency, cur)
   end
 
+  def save
+    readonly! if was_published?
+    super
+  end
+
   private
+
+  def was_published?
+    published_was
+  end
+
   def credit_note_price_not_positive
     total_price!
-    if self.credit_note? && self.price > 0
+    if credit_note? && price > 0
       error = 'Credit Notes Should not have a Positive Price!'
-      self.errors.add(:base, error)
+      errors.add(:base, error)
     end
   end
 
@@ -58,53 +56,53 @@ class Invoice < ActiveRecord::Base
   end
 
   def total_price!
-    sum = (self.service_items + self.expense_items).inject(0) { |s,item|
-      s + convert_currency(item.price, item.currency, self.currency)
+    sum = (service_items + expense_items).inject(0) { |s, item|
+      s + convert_currency(item.price, item.currency, currency)
     }
     self.price = sum
   end
-  
-  def freeze_if_published!
-    self.freeze if self.published?
-  end
 
   def ensure_due_date!
-    unless self.due_date
-      self.due_date = self.date + (self.credit_note? ? 0 : 30)
+    if due_date.blank?
+      self.due_date = date + (credit_note? ? 0 : 30)
     end
   end
 
   def ensure_currency!
-    self.currency ||= Currencies.first
+    self.currency = Currencies.first if currency.blank?
   end
 
   def ensure_invoice_year!
-    if date = self.date 
-      self.invoice_year = date.year unless self.invoice_year
-    else
-      errors.add(:date, :blank)
-    end
+    self.invoice_year = date.year if date.present? && invoice_year.blank?
   end
 
   def ensure_invoice_count!
-    unless self.invoice_count || self.errors.any?
-      client_invoices = Invoice
-        .where(invoice_year: self.invoice_year).where.not(id: self.id)
-        .where(client_id: self.client_id).order(:invoice_count)
-      last_invoice = client_invoices.last
-      self.invoice_count = last_invoice.try(:invoice_count).to_i + 1
-    end
+    return if invoice_count.present? || errors.any?
+
+    last_invoice_count = Invoice
+      .where(invoice_year: invoice_year)
+      .where(client_id: client_id)
+      .where.not(id: id)
+      .order(:invoice_count)
+      .pluck(:invoice_count)
+      .last
+
+    self.invoice_count = last_invoice_count.to_i + 1
   end
 
   def set_client_code!
-    self.client_code = Client.find(self.client_id).code
+    self.client_code = client.code
   end
 
   def set_number!
-    set_client_code!; ensure_invoice_year!; ensure_invoice_count!
-    num = "#{self.client_code}-#{self.invoice_year}-" +
-          "#{self.invoice_count.to_s.rjust(3, '0')}"
-    num = num.prepend('CN-') if self.credit_note?
+    set_client_code!  
+    ensure_invoice_year! 
+    ensure_invoice_count!
+
+    count = invoice_count.to_s.rjust(3, '0')
+    num = "#{client_code}-#{invoice_year}-#{count}"
+    num = num.prepend('CN-') if credit_note?
+
     self.number = num
   end
 end

@@ -40,7 +40,7 @@
             <% links.each do |name,url| %>
             <li>
               <%= link_to url, target: "_blank" do %>
-                <%= image_tag asset_path("#{name}.png") %>
+                <%= image_tag "#{name}.png" %>
               <% end %>
             </li>
             <% end %>

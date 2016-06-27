@@ -1,7 +1,9 @@
-<h1 class="code"><%= @project.name %></h1>
-<section class="text-center">
-  <%= link_to @project.url, target: "_blank" do %>
-    <%= base64_image_tag @project.image.data_type, @project.image.normal_url %>
-  <% end %>
-  <p><%= @project.description %></p>
-</section>
+<article>
+  <h1 class="code"><%= @project.name %></h1>
+  <section class="text-center">
+    <%= link_to @project.url, target: "_blank" do %>
+      <%= wicked_pdf_image_tag @project.image %>
+    <% end %>
+    <p><%= @project.description %></p>
+  </section>
+</article>

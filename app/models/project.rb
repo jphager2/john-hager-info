@@ -1,3 +1,8 @@
 class Project < ActiveRecord::Base
-  has_one :image
+
+  scope :by_updated, -> { order(updated_at: :desc) }
+
+  def image
+    name.underscore.parameterize.underscore + ".jpg"
+  end
 end

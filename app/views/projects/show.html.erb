@@ -2,10 +2,10 @@
   <header>
     <h1><%= @project.name %></h1>
   </header>
-<section class="centered">
-  <%= link_to @project.url, target: "_blank" do %>
-    <%= image_tag @project.image.normal_url %>
-  <% end %>
-  <p><%= @project.description %></p>
-</section>
-
+  <section class="centered">
+    <%= link_to @project.url, target: "_blank" do %>
+      <%= image_tag @project.image %>
+    <% end %>
+    <p><%= @project.description %></p>
+  </section>
+</article>

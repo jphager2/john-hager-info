@@ -1,27 +1,23 @@
 <%
   skills = [
-    ["development", %w{ Ruby Git Github Rake Bash }],
+    ["development", %w{ Ruby Git Vim }],
     ["frontend web development", %w{ HTML CSS JavaScript }],
-    ["backend web development", [ 
-      "Ruby on Rails", "Sinatra", "Railo-CFML"
-    ]], 
-    ["testing", %w{ Minitest Rspec }],
-    ["other", %w{ SharePoint Exchange }],
+    ["backend web development", [ "Ruby on Rails", "Pakyow", "Sinatra" ]], 
+    ["testing", %w{ Minitest }]
   ]
 %>
-
 
 <div class="row">
   <div class="large-4 columns">
     <h3>Skills</h3>
   </div>                  <!-- end of left side -->
   <div class="large-8 columns">
-    <p>
-    <%= skills.map { |area,skills| 
-      "<span class=\"skill-area\">#{area.capitalize}</span>
-      <span class=\"skills\">(#{skills.join(', ')})</span>"
-    }.join(', ').html_safe %>.
-    </p>
+    <% skills.each do |area,skills|  %>
+      <p>
+        <strong class="skill-area"><%= area.capitalize %></strong>
+        <span class="skills">(<%= skills.join(', ') %>)</span>
+      </p>
+    <% end %>
   </div>                  <!-- end of right side -->
 </div>                    <!-- end of Skills -->
 

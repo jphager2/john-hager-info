@@ -14,15 +14,13 @@
           <td><%= project.name %></td>
           <td><%= link_to project.url, project.url %></td>
           <td><%= project.updated_at %></td>
-          <td><%= link_to "Download", project_path(id: project.id, format: :pdf) %></td>
-          <td><%= link_to "Edit", edit_project_path(id: project.id) %></td>
-          <td><%= link_to "Update Image Info", update_project_image_path(id: project.id) %></td>
-          <td><%= link_to "Destroy", project_path(id: project.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+          <td><%= link_to "Download", project_path(project, format: :pdf) %></td>
+          <td><%= link_to "Edit", edit_project_path(project) %></td>
+          <td><%= link_to "Destroy", project, method: :delete, data: { confirm: "Are you sure?" } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
   <%= link_to "+ New project", new_project_path %>
-  <%= link_to "Update All Image Info", update_all_project_images_path %>
 </section>
