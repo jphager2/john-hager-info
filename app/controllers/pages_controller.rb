@@ -3,9 +3,6 @@ class PagesController < ApplicationController
     load_promotion
   end
 
-  def go
-  end
-
   def contact
   end
 
@@ -13,6 +10,6 @@ class PagesController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.order("updated_at desc")
+    @projects = Project.by_updated
   end
 end

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'portfolio', to: "pages#portfolio"
   get 'contact', to: "pages#contact"
-  get 'go', to: "pages#go"
   get 'cv', to: "pages#cv"
 
   get 'login', to: "sessions#new"
