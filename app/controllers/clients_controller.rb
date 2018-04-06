@@ -1,6 +1,4 @@
-require 'pp'
 class ClientsController < AdminController
-  before_action :authenticate
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
@@ -56,6 +54,10 @@ class ClientsController < AdminController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
+    if @client.invoices.present?
+      raise ActionController::RoutingError.new(:not_allowed)
+    end
+
     @client.destroy
     respond_to do |format|
       format.html { redirect_to clients_url }
@@ -63,20 +65,15 @@ class ClientsController < AdminController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
+  protected
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def client_params
-      params.require(:client).permit(:name, :code, :contact_name, :contact_email, :contact_phone, :address1, :address2, :city, :state, :zip, :country, :tax_no, :registration_no)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id])
+  end
 
-    def authenticate
-      unless signed_in?
-        raise ActionController::RoutingError.new('Not Found')
-      end
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def client_params
+    params.require(:client).permit(:name, :code, :contact_name, :contact_email, :contact_phone, :address1, :address2, :city, :state, :zip, :country, :tax_no, :registration_no)
+  end
 end

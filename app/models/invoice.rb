@@ -12,7 +12,6 @@ class Invoice < ApplicationRecord
 
   before_validation :set_number!
 
-  validates :client_id, presence: true
   validates :date, presence: true
   validates :period_covered_from, presence: true
   validates :period_covered_to, presence: true
