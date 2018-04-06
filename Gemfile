@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.3.0'
 
-gem 'rails', '4.1.6'
+gem 'rails', '~> 4.1.16'
 
 gem 'addressable'
 
@@ -51,4 +51,3 @@ gem 'spring', group: :development
 group :production do
   gem 'rails_12factor'
 end
-
