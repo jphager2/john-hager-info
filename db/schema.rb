@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clients", force: true do |t|
+  create_table "clients", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
     t.string   "contact_name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
     t.string   "tax_no"
   end
 
-  create_table "image_sizes", force: true do |t|
+  create_table "image_sizes", force: :cascade do |t|
     t.integer  "image_id"
     t.integer  "height"
     t.integer  "width"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
     t.datetime "updated_at"
   end
 
-  create_table "invoice_items", force: true do |t|
+  create_table "invoice_items", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.float    "price"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
     t.string   "type"
   end
 
-  create_table "invoices", force: true do |t|
+  create_table "invoices", force: :cascade do |t|
     t.string   "number"
     t.integer  "invoice_year"
     t.integer  "invoice_count"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
     t.boolean  "credit_note",         default: false
   end
 
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
     t.text     "description"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160627182212) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
