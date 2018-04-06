@@ -1,4 +1,4 @@
-class InvoiceItem < ActiveRecord::Base
+class InvoiceItem < ApplicationRecord
   belongs_to :invoice
 
   before_validation :ensure_currency
@@ -11,6 +11,7 @@ class InvoiceItem < ActiveRecord::Base
   end
 
   private
+
   def ensure_currency
     self.currency = Invoice::Currencies.first if currency.blank?
   end

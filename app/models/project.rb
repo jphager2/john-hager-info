@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
 
   scope :by_updated, -> { order(updated_at: :desc) }
 

@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   EMAIL_REGEXP = /\A[\w+-.]+@[a-z\d\-.]+\.[a-z]+\z/
 
   has_secure_password
@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, if: :new_record?
 
-
   def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -21,6 +20,7 @@ class User < ActiveRecord::Base
   end
 
   private 
+
   def create_remember_token
     token = self.class.new_remember_token
     encrypted_token = self.class.encrypt(token) 
