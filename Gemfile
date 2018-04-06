@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.0.0'
 
 gem 'addressable'
 
@@ -9,7 +9,7 @@ gem 'faraday'
 
 gem "cocoon"
 
-gem 'thin'
+gem 'puma'
 
 # WebSockets
 gem "faye-websocket", '~> 0.7.3'
@@ -17,26 +17,26 @@ gem "faye-websocket", '~> 0.7.3'
 # For null objects
 gem 'naught'
 
-gem 'pg', '~>0.15.1'
+gem 'pg', '~> 0.15'
 
 gem 'bcrypt-ruby', '3.1.2'
 
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 
 # Daemon
 gem 'daemons', '~> 1.1.9'
 
 # Foundation gems
 gem 'zurb-foundation', '~> 4.3.2'
-gem 'foundation-rails', '~> 5.2.2.0'
-gem 'foundation_rails_helper', '~> 0.5.0'
+gem 'foundation-rails', '~> 5.2'
+gem 'foundation_rails_helper', '~> 2.0.0'
 
 # PDF
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-heroku'
 
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'

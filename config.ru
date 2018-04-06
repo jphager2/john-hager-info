@@ -3,6 +3,6 @@ use Rack::ContentLength
 
 require ::File.expand_path('../config/environment',  __FILE__)
 
-Faye::WebSocket.load_adapter('thin')
+Faye::WebSocket.load_adapter('puma')
 
 run Rails.application
