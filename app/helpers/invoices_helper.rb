@@ -1,7 +1,7 @@
 module InvoicesHelper
 
   def address_for(client)
-    content_tag(:p) do 
+    tag.p do 
       [
         client.name,
         client.address1, 
@@ -21,7 +21,7 @@ module InvoicesHelper
   def city_state_zip_line(client)
     [:city,:state,:zip].map { |atrb| 
       if client.__send__(atrb).present?
-        content_tag :span, client.__send__(atrb) 
+        tag.span client.__send__(atrb) 
       end
     }.compact.join(', ').html_safe
   end

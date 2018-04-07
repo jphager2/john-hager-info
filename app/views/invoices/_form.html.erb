@@ -1,4 +1,4 @@
-<%= form_for(@invoice) do |f| %>
+<%= form_with(model: @invoice) do |f| %>
   <%= f.hidden_field :credit_note %>
   <div class="row">
     <div class="small-9 columns">

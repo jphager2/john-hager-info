@@ -1,4 +1,4 @@
-<%= form_for(@project, html: {class: "basic_form"}) do |f| %>
+<%= form_with(model: @project, html: {class: "basic_form"}) do |f| %>
   <%= f.text_field :name %>
   <br>
   <%= f.url_field :url %>
