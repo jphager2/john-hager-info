@@ -14,10 +14,6 @@ module JohnHager
     config.middleware.use(JohnHager::GithubBackend)
 
     config.assets.precompile += ['application.css', 'pages.css', 'foundation_and_overrides.scss', 'fonts.css'] 
-
-    config.active_record.raise_in_transactional_callbacks = true
-
-    ActiveSupport.halt_callback_chains_on_return_false = false
   end
 end
 
