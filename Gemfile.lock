@@ -204,7 +204,7 @@ DEPENDENCIES
   zurb-foundation (~> 4.3.2)
 
 RUBY VERSION
-   ruby 2.3.0p0
+   ruby 2.4.6p354
 
 BUNDLED WITH
-   1.16.1
+   1.17.3
